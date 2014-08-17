@@ -4,7 +4,6 @@
 private var blankGfx:Texture;
 
 function OnGUI () {
-//Play 2 Axis
 if(GUI.Button(Rect(Screen.width/3,Screen.height/1.47,Screen.width/3,Screen.height/6), blankGfx, "")){
 Application.LoadLevel("game2");
 }
