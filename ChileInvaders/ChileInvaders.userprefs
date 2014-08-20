@@ -1,16 +1,24 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/playeranimator.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/asteroid.cs">
     <Files>
-      <File FileName="Assets/Scripts/GUIrescaler.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/weaponsystem.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/menu.js" Line="11" Column="2" />
-      <File FileName="Assets/Scripts/explosion.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/enemyspawner.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/enemyship.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/asteroid.js" Line="35" Column="2" />
-      <File FileName="Assets/Scripts/playeranimator.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/asteroid.js" Line="23" Column="2" />
+      <File FileName="Assets/Scripts/asteroid.cs" Line="17" Column="47" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="asteroid.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="Assembly-UnityScript" expanded="True">
+            <Node name="Scripts" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
