@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{EA5FC939-F814-F9E7-0F56-0158DE1816E6}</ProjectGuid>
+	<ProjectGuid>{0531B8DE-32BE-504F-AB7E-E402EB707A39}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-UnityScript</AssemblyName>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,21 +46,24 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GUIrescaler.js" />
-     <Compile Include="Assets\Scripts\asteroid.js" />
-     <Compile Include="Assets\Scripts\experience.js" />
-     <Compile Include="Assets\Scripts\experiencemanager.js" />
-     <Compile Include="Assets\Scripts\explosion.js" />
-     <Compile Include="Assets\Scripts\fireanimator.js" />
-     <Compile Include="Assets\Scripts\menu.js" />
-     <Compile Include="Assets\Scripts\menuloader.js" />
-     <Compile Include="Assets\Scripts\musicmanager.js" />
-     <Compile Include="Assets\Scripts\orbenemy.js" />
-     <Compile Include="Assets\Scripts\playeranimator.js" />
-     <Compile Include="Assets\Scripts\playercontrols.js" />
-     <Compile Include="Assets\Scripts\shipbullet.js" />
-     <Compile Include="Assets\Scripts\shiphealth.js" />
-     <Compile Include="Assets\Scripts\weaponsystem.js" />
+     <Compile Include="Assets\Scripts\GUIrescaler.cs" />
+     <Compile Include="Assets\Scripts\bullet.cs" />
+     <Compile Include="Assets\Scripts\enemyBullet.cs" />
+     <Compile Include="Assets\Scripts\enemyship.cs" />
+     <Compile Include="Assets\Scripts\enemyspawner.cs" />
+     <Compile Include="Assets\Scripts\experience.cs" />
+     <Compile Include="Assets\Scripts\experiencemanager.cs" />
+     <Compile Include="Assets\Scripts\explosion.cs" />
+     <Compile Include="Assets\Scripts\fireanimator.cs" />
+     <Compile Include="Assets\Scripts\menu.cs" />
+     <Compile Include="Assets\Scripts\menuloader.cs" />
+     <Compile Include="Assets\Scripts\musicmanager.cs" />
+     <Compile Include="Assets\Scripts\orbenemy.cs" />
+     <Compile Include="Assets\Scripts\playeranimator.cs" />
+     <Compile Include="Assets\Scripts\playercontrols.cs" />
+     <Compile Include="Assets\Scripts\shipbullet.cs" />
+     <Compile Include="Assets\Scripts\shiphealth.cs" />
+     <Compile Include="Assets\Scripts\weaponsystem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
