@@ -8,7 +8,7 @@ public class shipbullet : MonoBehaviour {
 	
 	void  Start (){
 		//here we give the bullet a speed going left
-		rigidbody.velocity = new Vector2( -8, 0);
+		rigidbody.velocity = new Vector3( -8, rigidbody.velocity.y, rigidbody.velocity.z);
 	}
 	
 	void  Update (){

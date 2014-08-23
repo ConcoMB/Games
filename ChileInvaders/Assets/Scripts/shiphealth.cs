@@ -38,12 +38,12 @@ public class shiphealth : MonoBehaviour {
 		gameOverText.guiText.enabled = true;
 		//here we wait for 3 seconds so the scene doesn't load right away again.
 		StartCoroutine(Wait());
-		//here we find the name of the scene we were just playing, and load it again.
-		string lvlName = Application.loadedLevelName;
-		Application.LoadLevel(lvlName);
 	}
 
 	IEnumerator Wait() {
 		yield return new WaitForSeconds(3);
+		//here we find the name of the scene we were just playing, and load it again.
+		string lvlName = Application.loadedLevelName;
+		Application.LoadLevel(lvlName);
 	}
 }

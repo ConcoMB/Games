@@ -18,7 +18,7 @@ public class enemyship : MonoBehaviour {
 	
 	//we get the ship moving left once it is spawned.
 	void  Start (){
-		rigidbody.velocity = new Vector2(0, -2.5f);
+		rigidbody.velocity = new Vector3(-2.5f, 0, 0);
 	}
 	
 	void  Update (){
@@ -37,10 +37,10 @@ public class enemyship : MonoBehaviour {
 			GameObject custom3 = (GameObject) Instantiate(enemyBullet, transform.position- new Vector3(0.5f,0.1f,0), Quaternion.Euler(-90,0,0));
 			GameObject custom4 = (GameObject) Instantiate(enemyBullet, transform.position- new Vector3(0.5f,0.1f,0), Quaternion.Euler(-90,0,0));
 			//to make the bullets spread, we add extra z velocity to each one to they all move on their own path.
-			custom1.rigidbody.velocity = new Vector3(0, 0, 3);
-			custom2.rigidbody.velocity = new Vector3(0, 0, 1);
-			custom3.rigidbody.velocity = new Vector3(0, 0, -1);
-			custom4.rigidbody.velocity = new Vector3(0, 0, -3);
+			custom1.rigidbody.velocity = new Vector3(custom1.rigidbody.velocity.x, custom1.rigidbody.velocity.y, 3);
+			custom2.rigidbody.velocity = new Vector3(custom2.rigidbody.velocity.x, custom2.rigidbody.velocity.y, 1);
+			custom3.rigidbody.velocity = new Vector3(custom3.rigidbody.velocity.x, custom3.rigidbody.velocity.y, -1);
+			custom4.rigidbody.velocity = new Vector3(custom4.rigidbody.velocity.x, custom4.rigidbody.velocity.y -3);
 			counter = 0.0f;
 		}
 		

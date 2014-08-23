@@ -15,7 +15,7 @@ public class experience : MonoBehaviour {
 	void  Update (){
 		//this finds the player (target) and makes it fly towards the player until it hits the player
 		if(target != null){
-			Vector2 dir= target.transform.position - transform.position;
+			Vector3 dir= target.transform.position - transform.position;
 			dir = dir.normalized;
 			rigidbody.AddForce(dir * 1000 * Time.deltaTime);
 		}

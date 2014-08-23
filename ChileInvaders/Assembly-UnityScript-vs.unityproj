@@ -46,21 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GUIrescaler.js" />
      <Compile Include="Assets\Scripts\asteroid.js" />
-     <Compile Include="Assets\Scripts\experience.js" />
-     <Compile Include="Assets\Scripts\experiencemanager.js" />
-     <Compile Include="Assets\Scripts\explosion.js" />
-     <Compile Include="Assets\Scripts\fireanimator.js" />
-     <Compile Include="Assets\Scripts\menu.js" />
-     <Compile Include="Assets\Scripts\menuloader.js" />
-     <Compile Include="Assets\Scripts\musicmanager.js" />
-     <Compile Include="Assets\Scripts\orbenemy.js" />
-     <Compile Include="Assets\Scripts\playeranimator.js" />
-     <Compile Include="Assets\Scripts\playercontrols.js" />
-     <Compile Include="Assets\Scripts\shipbullet.js" />
-     <Compile Include="Assets\Scripts\shiphealth.js" />
-     <Compile Include="Assets\Scripts\weaponsystem.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

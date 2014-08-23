@@ -78,7 +78,7 @@ public class playercontrols : MonoBehaviour {
 			//If the player presses A, add velocity to move left.
 			if(Input.GetKey("s") || Input.GetKey("down")){
 				if(rigidbody.velocity.z > 0){
-					rigidbody.velocity = new Vector3(0, 0, 0);
+					rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0);
 				}
 				if(rigidbody.velocity.z > -shipSpeed){
 					rigidbody.velocity = new Vector3(
@@ -91,7 +91,7 @@ public class playercontrols : MonoBehaviour {
 			//if the player pressed D, add velocity to move right.
 			if(Input.GetKey("w")|| Input.GetKey("up")){
 				if(rigidbody.velocity.z < 0){
-					rigidbody.velocity = new Vector3(0, 0, 0);
+					rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0);
 				}
 				if(rigidbody.velocity.z < shipSpeed){
 					rigidbody.velocity = new Vector3(
@@ -103,7 +103,7 @@ public class playercontrols : MonoBehaviour {
 			}
 		}else{
 			//use else to do the opposite of an if() statement. this stops the player if lets go of A or D
-			rigidbody.velocity = new Vector3(0, 0, 0);
+			rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, 0);
 		}
 		
 		if(twoAxis == true){
@@ -111,29 +111,31 @@ public class playercontrols : MonoBehaviour {
 				//If the player presses A, add velocity to move left.
 				if(Input.GetKey("a") || Input.GetKey("left")){
 					if(rigidbody.velocity.x > 0){
-						rigidbody.velocity = new Vector2(0, 0);
+						rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, rigidbody.velocity.z);
 					}
 					if(rigidbody.velocity.x > -shipSpeed){
-						rigidbody.velocity = new Vector2(
+						rigidbody.velocity = new Vector3(
 							rigidbody.velocity.x - 48*Time.deltaTime,
-						    rigidbody.velocity.y
+						    rigidbody.velocity.y,
+							rigidbody.velocity.z
 						);
 					}
 				}
 				//if the player pressed D, add velocity to move right.
 				if(Input.GetKey("d")|| Input.GetKey("right")){
 					if(rigidbody.velocity.x < 0){
-						rigidbody.velocity = new Vector2(0, rigidbody.velocity.y);
+						rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, rigidbody.velocity.z);
 					}
 					if(rigidbody.velocity.x < shipSpeed){
-						rigidbody.velocity = new Vector2(
+						rigidbody.velocity = new Vector3(
 							rigidbody.velocity.x + 48*Time.deltaTime,
-							rigidbody.velocity.y
+							rigidbody.velocity.y,
+							rigidbody.velocity.z
 						);
 					}
 				}
 			}else{
-				rigidbody.velocity = new Vector2(0, 0);
+				rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, rigidbody.velocity.z);
 			}
 		}
 		#endif

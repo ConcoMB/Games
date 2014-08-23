@@ -1,13 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/menu.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/enemybullet.cs">
     <Files>
-      <File FileName="Assets/Scripts/menu.js" Line="2" Column="1" />
-      <File FileName="Assets/Scripts/menuloader.js" Line="8" Column="2" />
-      <File FileName="Assets/Scripts/musicmanager.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/menu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/menuloader.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/musicmanager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/playercontrols.cs" Line="138" Column="83" />
+      <File FileName="Assets/Scripts/enemybullet.cs" Line="39" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

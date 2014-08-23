@@ -48,7 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GUIrescaler.cs" />
      <Compile Include="Assets\Scripts\bullet.cs" />
-     <Compile Include="Assets\Scripts\enemyBullet.cs" />
+     <Compile Include="Assets\Scripts\enemybullet.cs" />
      <Compile Include="Assets\Scripts\enemyship.cs" />
      <Compile Include="Assets\Scripts\enemyspawner.cs" />
      <Compile Include="Assets\Scripts\experience.cs" />
