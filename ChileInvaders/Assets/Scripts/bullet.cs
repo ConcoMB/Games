@@ -16,7 +16,7 @@ public class bullet : MonoBehaviour {
 	}
 	
 	void  OnTriggerEnter(Collider other){
-		if(other.tag == "enemy"){
+		if (other.tag == "enemy"){
 			other.BroadcastMessage("hit", SendMessageOptions.DontRequireReceiver);
 			Destroy(gameObject);
 		}

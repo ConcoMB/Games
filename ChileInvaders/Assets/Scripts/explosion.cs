@@ -11,6 +11,7 @@ public class explosion : MonoBehaviour {
 	public Texture fire5;
 	public Texture fire6;
 	public AudioClip explodeSound;
+
 	private Texture blankTexture;
 	private float counter = 0.0f;
 	private float frameRate = 32.0f;
@@ -45,7 +46,7 @@ public class explosion : MonoBehaviour {
 		if(counter > 7 && renderer.material.color.a != 0.0f){
 			renderer.material.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 		}
-		if(counter > frameRate*1.5f){
+		if(counter > frameRate * 1.5f){
 			Destroy(gameObject);
 		}
 	}
