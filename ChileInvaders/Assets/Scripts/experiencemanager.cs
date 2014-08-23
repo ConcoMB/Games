@@ -33,6 +33,11 @@ public class experiencemanager : MonoBehaviour {
 			levelText.text = "Lvl " + level.ToString();
 			//this message is received by weapons so they can keep track of the level and get better as well. 
 			SendMessage("levelup", level, SendMessageOptions.DontRequireReceiver);
+			GameObject enemyspawner = GameObject.Find("enemyspawner");
+			enemyspawner.SendMessage("levelup", level, SendMessageOptions.DontRequireReceiver);
+
+			GameObject stars = GameObject.Find("Stars");
+			stars.SendMessage("levelup", level, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 	

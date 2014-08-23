@@ -20,6 +20,7 @@ public class enemyspawner : MonoBehaviour {
 	private GameObject player;
 	private int randomChoice;
 	private float spawnRate = 2.0f;
+	private int level = 1;
 	
 	void  Update (){
 		//counter counts based on time here so the spawner can spawn based on time
@@ -33,20 +34,25 @@ public class enemyspawner : MonoBehaviour {
 			//before one is spawned we have to decide at random which one to spawn
 			randomChoice = Random.Range(1,6);
 			//asteroids take up 3 out of the 5 possible spawns, making it spawn the most often
-			if(randomChoice >= 1 && randomChoice <= 3){
+			if(level < 2 || randomChoice >= 1 && randomChoice <= 3){
 				Instantiate(enemy1, new Vector3(transform.position.x,0,Random.Range(minHeight,maxHeight)), Quaternion.Euler(-90,0,0));
 			}
 			//if the random number ends up being 4, it'll spawn the orb, set as enemy2
-			if(randomChoice == 4){
+			else if(level < 3 || randomChoice == 4){
 				Instantiate(enemy2, new Vector3(transform.position.x,0,Random.Range(minHeight/3,maxHeight/3)), Quaternion.Euler(-90,0,0));
 			}
 			//if the random number ends up being 5, it'll spawn the ship, set as enemy3
-			if(randomChoice == 5){
+			else if(randomChoice == 5){
 				Instantiate(enemy3, new Vector3(transform.position.x,0,Random.Range(minHeight,maxHeight)), Quaternion.Euler(-90,90,0));
 			}
 			
 			counter = 0.0f;
 		}
 		
+	}
+
+	void  levelup ( int lvlNumber  ){
+		level = lvlNumber;
+		Debug.Log("level up" + lvlNumber);
 	}
 }
