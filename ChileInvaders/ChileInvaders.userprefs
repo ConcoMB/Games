@@ -11,7 +11,28 @@
       <File FileName="Assets/Scripts/asteroid.js" Line="1" Column="1" />
       <File FileName="Assets/Scripts/playeranimator.js" Line="1" Column="1" />
       <File FileName="Assets/menuspaceship.js" Line="1" Column="1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/enemyspawner.js">
+    <Files>
+      <File FileName="Assets/Scripts/asteroid.cs" Line="57" Column="2" />
+      <File FileName="Assets/Scripts/asteroid.js" Line="8" Column="24" />
+      <File FileName="Assets/Scripts/asteroid.cs" Line="14" Column="2" />
+      <File FileName="Assets/Scripts/enemyspawner.js" Line="28" Column="11" />
+      <File FileName="../../../../videojuegos/mdesanti/videojuegos/tp1/src/Assets/scripts/Ball.cs" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Scripts" expanded="True">
+              <Node name="asteroid.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="Assembly-UnityScript" expanded="True">
+            <Node name="Scripts" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
