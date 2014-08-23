@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GUIrescaler.cs" />
+     <Compile Include="Assets\Scripts\asteroid.cs" />
      <Compile Include="Assets\Scripts\bullet.cs" />
      <Compile Include="Assets\Scripts\enemybullet.cs" />
      <Compile Include="Assets\Scripts\enemyship.cs" />
@@ -64,6 +65,7 @@
      <Compile Include="Assets\Scripts\shipbullet.cs" />
      <Compile Include="Assets\Scripts\shiphealth.cs" />
      <Compile Include="Assets\Scripts\weaponsystem.cs" />
+     <Compile Include="Assets\menuSpaceship.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

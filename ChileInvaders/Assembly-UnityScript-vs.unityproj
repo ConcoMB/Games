@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{0531B8DE-32BE-504F-AB7E-E402EB707A39}</ProjectGuid>
+	<ProjectGuid>{EA5FC939-F814-F9E7-0F56-0158DE1816E6}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-UnityScript</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,26 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GUIrescaler.cs" />
-     <Compile Include="Assets\Scripts\asteroid.cs" />
-     <Compile Include="Assets\Scripts\bullet.cs" />
-     <Compile Include="Assets\Scripts\enemybullet.cs" />
-     <Compile Include="Assets\Scripts\enemyship.cs" />
-     <Compile Include="Assets\Scripts\enemyspawner.cs" />
-     <Compile Include="Assets\Scripts\experience.cs" />
-     <Compile Include="Assets\Scripts\experiencemanager.cs" />
-     <Compile Include="Assets\Scripts\explosion.cs" />
-     <Compile Include="Assets\Scripts\fireanimator.cs" />
-     <Compile Include="Assets\Scripts\menu.cs" />
-     <Compile Include="Assets\Scripts\menuloader.cs" />
-     <Compile Include="Assets\Scripts\musicmanager.cs" />
-     <Compile Include="Assets\Scripts\orbenemy.cs" />
-     <Compile Include="Assets\Scripts\playeranimator.cs" />
-     <Compile Include="Assets\Scripts\playercontrols.cs" />
-     <Compile Include="Assets\Scripts\shipbullet.cs" />
-     <Compile Include="Assets\Scripts\shiphealth.cs" />
-     <Compile Include="Assets\Scripts\weaponsystem.cs" />
-     <Compile Include="Assets\menuSpaceship.cs" />
+     <Compile Include="Assets\Scripts\asteroid.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
