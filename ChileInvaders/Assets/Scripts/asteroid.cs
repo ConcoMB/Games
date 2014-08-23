@@ -2,22 +2,20 @@
 using UnityEngine;
 using System.Collections;
 
-public class Asteroid : MonoBehaviour {
+public class asteroid : MonoBehaviour {
 	
 	
 	//here are public variables that can be accessed in the inspector
-	int health = 2;
-	GameObject explosion;
-	GameObject expOrb;
-	int expDrop = 3;
-	AudioClip hitSound;
+	public int health = 2;
+	public GameObject explosion;
+	public GameObject expOrb;
+	public int expDrop = 3;
+	public AudioClip hitSound;
 	
 	//we get the asteroid to start at a random speed going left as well as a random rotation.
 	void  Start (){
-		Vector3 v = rigidbody.velocity;
-		v.x = Random.Range(-10,-6);
-		v.y  = Random.Range(-6,6);
-		rigidbody.velocity = v;
+		rigidbody.velocity = new Vector3(Random.Range (-10, -6), 0, 0);
+		rigidbody.angularVelocity = new Vector3(0, Random.Range(-6,6), 0);
 	}
 	
 	void  Update (){
