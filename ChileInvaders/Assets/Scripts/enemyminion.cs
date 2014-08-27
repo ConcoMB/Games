@@ -54,7 +54,7 @@ public class enemyminion : MonoBehaviour {
 			Instantiate (expOrb, transform.position, Quaternion.Euler (-90, 0, 0));
 			expDrop -= 1;
 		}
-		Instantiate(explosion,transform.position, Quaternion.Euler(-90,Random.Range(-180,180), 0));
+		Instantiate(explosion, transform.position, Quaternion.Euler(-90, Random.Range(-180,180), 0));
 		Destroy(gameObject);
 	}
 }

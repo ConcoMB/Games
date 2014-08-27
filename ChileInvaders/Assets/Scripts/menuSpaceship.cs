@@ -18,7 +18,6 @@ public class menuSpaceship : MonoBehaviour {
 		angle += speed * Time.deltaTime;
 		if (angle > 270) 
 			angle -= 360;
-		Debug.Log(maxUpAndDown * Mathf.Sin(angle * toDegrees));
 		transform.localPosition = new Vector2(transform.localPosition.x, startHeight 
 		                                      + maxUpAndDown * (1 + Mathf.Sin(angle * toDegrees)) / 2);
 	}

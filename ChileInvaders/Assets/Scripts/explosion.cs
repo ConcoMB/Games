@@ -14,7 +14,7 @@ public class explosion : MonoBehaviour {
 
 	private Texture blankTexture;
 	private float counter = 0.0f;
-	private float frameRate = 32.0f;
+	private float frameRate = 16.0f;
 	
 	void  Start (){
 		audio.PlayOneShot(explodeSound);
