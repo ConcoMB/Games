@@ -54,6 +54,7 @@ public class boss : MonoBehaviour {
 		if (health == maxhealth / 2) {
 			Texture texture = (Texture) Resources.Load("finalboss");
 			renderer.material.mainTexture = texture;
+			fireRate *= 0.5f;
 		}
 		if (health != 0 && audio.enabled == true){
 			audio.PlayOneShot(hitSound);
