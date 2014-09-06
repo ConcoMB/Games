@@ -18,7 +18,6 @@ public class PickUpManager : MonoBehaviour {
 			return;
 		}
 		isInPickupMode = true;		
-		Debug.Log ("isinpickup: " + isInPickupMode);
 		foreach (GameObject pickup in GameObject.FindGameObjectsWithTag("PickUpZone")) {
 			pickup.renderer.enabled = false;
 		}
@@ -26,11 +25,10 @@ public class PickUpManager : MonoBehaviour {
 		int i = Random.Range (0, drops.Length);
 		theDropZone = drops [i];
 		theDropZone.renderer.enabled = true;
+		GameObject.Find("LevelManager").SendMessage("BeginPickUp", theDropZone, SendMessageOptions.DontRequireReceiver);
 	}
 
 	void PickUpModeOff() {
-		Debug.Log ("holis: " + isInPickupMode);
-
 		if (!isInPickupMode) {
 			return;
 		}
@@ -39,5 +37,6 @@ public class PickUpManager : MonoBehaviour {
 		foreach (GameObject pickup in GameObject.FindGameObjectsWithTag("PickUpZone")) {
 			pickup.renderer.enabled = true;
 		}
+		GameObject.Find ("LevelManager").SendMessage ("EndPickUp", SendMessageOptions.DontRequireReceiver);
 	}
 }
