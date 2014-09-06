@@ -107,9 +107,6 @@ if (currentSpeed >= 0){
   }
 GUIUtility.RotateAroundPivot(rotationAngle,Vector2(Screen.width - 150 ,Screen.height - 150));
 GUI.DrawTexture(Rect(Screen.width - 300,Screen.height - 300,300,300),speedOMeterPointer);
-
-
-
 }
 
 //CollisioN FX
