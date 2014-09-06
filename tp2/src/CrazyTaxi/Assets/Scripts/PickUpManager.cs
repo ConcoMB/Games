@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PickUpManager : MonoBehaviour {
 
+	public GameObject arrow;
+
 	private bool isInPickupMode;
 	private GameObject theDropZone;
 
@@ -11,13 +13,15 @@ public class PickUpManager : MonoBehaviour {
 		foreach (GameObject pickup in GameObject.FindGameObjectsWithTag("DropZone")) {
 			pickup.renderer.enabled = false;
 		}
+		arrow.renderer.enabled = false;
 	}
 
 	void PickUpModeOn() {
 		if (isInPickupMode) {
 			return;
 		}
-		isInPickupMode = true;		
+		isInPickupMode = true;	
+		arrow.renderer.enabled = true;
 		Debug.Log ("isinpickup: " + isInPickupMode);
 		foreach (GameObject pickup in GameObject.FindGameObjectsWithTag("PickUpZone")) {
 			pickup.renderer.enabled = false;
@@ -35,9 +39,17 @@ public class PickUpManager : MonoBehaviour {
 			return;
 		}
 		isInPickupMode = false;	
+		arrow.renderer.enabled = false;
 		theDropZone.renderer.enabled = false;
 		foreach (GameObject pickup in GameObject.FindGameObjectsWithTag("PickUpZone")) {
 			pickup.renderer.enabled = true;
+		}
+	}
+
+	void Update() {
+		if (isInPickupMode) {
+			arrow.transform.LookAt(theDropZone.transform, new Vector3(0,1,0));
+			arrow.transform.Rotate(new Vector3(90, 0, 0));
 		}
 	}
 }
