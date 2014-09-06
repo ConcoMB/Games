@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: ed8ddbfa049dade4a9798d64f3600a5c
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - skidMaterial: {fileID: 2100000, guid: ead8c034fea411645be48cb1c2154d1f, type: 2}
+  - skidSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

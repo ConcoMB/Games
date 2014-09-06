@@ -1,0 +1,15 @@
+ Settings Player
+1. Drag prefab machine (player) to the scene. 
+2. Apply the script (CarCameraControll) on camera.In the variable "Car" 
+indicates the car. 
+And optionally set the desired options for the script
+3. Can run scene
+
+ Settings AI
+1. Create an empty game object, give it the name "path" will create a number of empty objects and drag to where you need to create a path that will move bots. Making their subsidiaries to "path". Apply to the "path" script "AIPath".
+2. Drag the prefab "AI" on stage. In the variable "PathGroup" specify a previously created "the way." Customizable features of the machine. 
+3. All can run scene.
+
+I used Google translator. If something is wrong with the translation if you'll excuse me, but I think I managed to convey the essence =)
+
+Was problemmy - contact for E-mail Address : vadim.tihonyuk@yandex.ua 

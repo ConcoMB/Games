@@ -1,0 +1,6 @@
+Check the settings of Physics : Edit => ProjectSettings => Physics => Gravity Y= -20
+This must be done to prevent long flights and car for more downforce.
+Asset includes a 2 demo scenes in which there is nothing superfluous. Prefabs mood, you can look in detail at all dispensations.
+
+@mail : vadim.tihonyuk@yandex.ua 
+ 
