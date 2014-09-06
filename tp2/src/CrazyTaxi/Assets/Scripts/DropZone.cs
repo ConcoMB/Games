@@ -14,10 +14,10 @@ public class DropZone : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (Input.GetKey("space")) {
+		if (isInBox && Input.GetKey("space")) {
 			GameObject car = GameObject.FindGameObjectWithTag("Player");
 			if (car.rigidbody.velocity.magnitude < 0.05) {
-				GameObject.Find("PickUpManager").SendMessage("pickUpModeOff", SendMessageOptions.DontRequireReceiver);
+				GameObject.Find("PickUpManager").SendMessage("PickUpModeOff", SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}

@@ -14,10 +14,10 @@ public class PickUpZone : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (Input.GetKey("space")) {
+		if (isInBox && Input.GetKey("space")) {
 			GameObject car = GameObject.FindGameObjectWithTag("Player");
 			if (car.rigidbody.velocity.magnitude < 0.05) {
-				GameObject.Find("PickUpManager").SendMessage("pickUpModeOn", SendMessageOptions.DontRequireReceiver);
+				GameObject.Find("PickUpManager").SendMessage("PickUpModeOn", SendMessageOptions.DontRequireReceiver);
 			}
 		}
 	}
