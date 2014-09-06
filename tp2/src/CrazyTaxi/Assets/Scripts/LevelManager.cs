@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LevelManager : MonoBehaviour {
 	
-	private int level;
+	private int successfulTravels;
 	private float time;
 	private bool isInPlay;
 	private bool lost;
@@ -35,16 +35,15 @@ public class LevelManager : MonoBehaviour {
 		if (isInPlay) {
 			return;
 		}
-		time = 2;
 		isInPlay = true;
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
-		Debug.Log ("distance " + Vector3.Distance (player.rigidbody.position, drop.transform.position));
+		time = Vector3.Distance (player.rigidbody.position, drop.transform.position);
 	}
 
 	void EndPickUp() {
 		isInPlay = false;
 		if (time > 0) {
-			level++;
+			successfulTravels++;
 		}
 	}
 
@@ -54,6 +53,7 @@ public class LevelManager : MonoBehaviour {
 			StartCoroutine(Wait());
 			return;
 		}
+		GUI.Label(new Rect(Screen.width / 10, Screen.height / 10  - 50, 100, 50), "Successful travels: " + successfulTravels, timeStyle);
 		if (!isInPlay) {
 			return;
 		}
