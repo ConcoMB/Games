@@ -1,17 +1,19 @@
 using UnityEngine;
 using System.Collections;
 
-public class MYCLASSNAME : MonoBehaviour {
-//	@script AddComponentMenu ("CarPhys/Scripts/Car Camera Script")
-		
-	Transform car;	//Car Transform
-	float distance = 6.4f;		//Distance from car
-	float height = 1.4f; 	//Value on Y axis according to car transform
-	float rotationDamping = 3.0f;	 //lower the value , faster the damping will be
-	float heightDamping = 2.0f;	 //lower the value , faster the damping will be
-	float zoomRacio = 0.5f;	//Change on FOV
-	float DefaultFOV = 60;	//Min FOV
-	bool  rotate = true;	//Look Back While Reversing
+[AddComponentMenu("CarPhys/Scripts/Car Camera Script")]
+
+public class CarCameraScript : MonoBehaviour {
+
+
+	public Transform car;	//Car Transform
+	public float distance = 6.4f;		//Distance from car
+	public float height = 1.4f; 	//Value on Y axis according to car transform
+	public float rotationDamping = 3.0f;	 //lower the value , faster the damping will be
+	public float heightDamping = 2.0f;	 //lower the value , faster the damping will be
+	public float zoomRacio = 0.5f;	//Change on FOV
+	public float DefaultFOV = 60;	//Min FOV
+	public bool  rotate = true;	//Look Back While Reversing
 	private Vector3 rotationVector;	//Rotation Vector
 	
 	//Positioning
