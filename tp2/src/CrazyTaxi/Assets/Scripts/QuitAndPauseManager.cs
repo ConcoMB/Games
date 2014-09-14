@@ -3,13 +3,13 @@ using System.Collections;
 
 public class QuitAndPauseManager : MonoBehaviour {
 
+	public GameObject player;
+
 	private bool isQPressed = false;
-	private float originalTimeScale;
 	private GUIStyle style;
 	private bool isPaused = false;
 
 	void Start() {
-		originalTimeScale = Time.timeScale;
 		style = new GUIStyle ();
 		style.fontSize = 40;
 		style.normal.textColor = Color.white;
@@ -18,29 +18,37 @@ public class QuitAndPauseManager : MonoBehaviour {
 	void Update() {
 		if (Input.GetKeyDown ("p") && ! isQPressed) {
 			if (isPaused) {
-				Time.timeScale = this.originalTimeScale;
+				unpause();
 			} else {
-				Time.timeScale = 0;
+				pause();
 			}
 			isPaused = !isPaused;
 		}
 		if (Input.GetKeyDown ("q") && !isPaused) {
 			if (isQPressed) {
 				isQPressed = false;
-				Time.timeScale = this.originalTimeScale;
+				unpause();
 			} else {
 				isQPressed = true;
-				Time.timeScale = 0;
+				pause();
 			}
 		}
 		if (Input.GetKeyDown ("n") && !isPaused) {
 			isQPressed = false;
-			Time.timeScale = this.originalTimeScale;
+			unpause();
 		}
 		if (Input.GetKeyDown ("y") && isQPressed && !isPaused) {
 			Application.LoadLevel("mainMenu");
-			Time.timeScale = this.originalTimeScale;
+			unpause();
 		}
+	}
+
+	void pause() {
+		player.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+	}
+
+	void unpause() {
+		player.SendMessage ("OnUnpauseGame", SendMessageOptions.DontRequireReceiver);
 	}
 	
 	void OnGUI (){
