@@ -17,7 +17,7 @@ private var slipForwardFriction : float;	//Custom value
 
 function Start () {
 wheelCollider = gameObject.GetComponent(WheelCollider);
-carScript = transform.root.gameObject.GetComponent("CarControleScript");
+carScript = transform.root.gameObject.GetComponent(CarControleScript);
 SetValues();
 }
 

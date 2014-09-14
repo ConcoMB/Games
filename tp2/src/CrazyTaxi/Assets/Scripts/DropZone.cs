@@ -6,11 +6,17 @@ public class DropZone : MonoBehaviour {
 	private bool isInBox;
 	
 	void OnTriggerEnter (Collider other) {
-		isInBox = true;
+		if (other.transform.root.tag == "Player") {
+			Debug.Log ("atroden");
+			isInBox = true;
+		}
 	}
 	
 	void OnTriggerExit (Collider other) {
-		isInBox = false;
+		if (other.transform.root.tag == "Player") {
+			Debug.Log ("ajueren");
+			isInBox = false;
+		}
 	}
 	
 	void Update() {

@@ -6,11 +6,21 @@ public class PickUpZone : MonoBehaviour {
 	private bool isInBox;
 
 	void OnTriggerEnter (Collider other) {
-		isInBox = true;
+		if (other.transform.root.tag == "Player") {
+			Debug.Log ("its in");
+			isInBox = true;
+		}
 	}
 
 	void OnTriggerExit (Collider other) {
-		isInBox = false;
+		if (other.transform.root.tag == "Player") {
+			Debug.Log ("its out");
+			isInBox = false;
+		}
+	}
+
+	void Start() {
+		rigidbody.angularVelocity = new Vector3 (0, 10, 0);
 	}
 	
 	void Update() {
