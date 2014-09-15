@@ -4,6 +4,7 @@ using System.Collections;
 public class LevelManager : MonoBehaviour {
 
 	public int winAmount = 5;
+	public Font font;
 	private int successfulTravels;
 	private float time;
 	private bool isInPlay;
@@ -15,8 +16,11 @@ public class LevelManager : MonoBehaviour {
 	void Start() {
 		lostStyle = new GUIStyle ();
 		lostStyle.fontSize = 40;
-		lostStyle.normal.textColor = Color.white;
+		lostStyle.normal.textColor = Color.white;		
+		lostStyle.font = font;
+
 		timeStyle = new GUIStyle ();
+		timeStyle.font = font;
 		timeStyle.fontSize = 20;
 		timeStyle.normal.textColor = Color.white;
 	}

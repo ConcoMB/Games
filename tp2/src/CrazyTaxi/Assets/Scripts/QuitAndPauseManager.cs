@@ -3,8 +3,7 @@ using System.Collections;
 
 public class QuitAndPauseManager : MonoBehaviour {
 
-	public GameObject player;
-	public GameObject levelManager;
+	public Font font; 
 
 	private bool isQPressed = false;
 	private GUIStyle style;
@@ -14,6 +13,7 @@ public class QuitAndPauseManager : MonoBehaviour {
 	void Start() {
 		style = new GUIStyle ();
 		style.fontSize = 40;
+		style.font = font;
 		style.normal.textColor = Color.white;
 	}
 	
