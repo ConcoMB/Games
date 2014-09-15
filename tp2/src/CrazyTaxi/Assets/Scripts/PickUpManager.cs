@@ -54,7 +54,7 @@ public class PickUpManager : MonoBehaviour {
 	void Update() {
 		if (isInPickupMode) {
 			arrow.transform.LookAt(theDropZone.transform, new Vector3(0,1,0));
-			arrow.transform.Rotate(new Vector3(90, 0, 0));
+			arrow.transform.Rotate(new Vector3(25, 0, 0));
 		}
 	}
 }
