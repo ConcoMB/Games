@@ -71,7 +71,7 @@ public class LevelManager : MonoBehaviour {
 		if (!isInPlay) {
 			return;
 		}
-		GUI.Label(new Rect(Screen.width / 10, Screen.height / 10, 100, 50), "Time Left: " + time, timeStyle);
+		GUI.Label(new Rect(Screen.width / 10, Screen.height / 10, 100, 50), "Time Left: " + (int)time + " seconds", timeStyle);
 	}
 
 	IEnumerator Wait(){
