@@ -4,10 +4,12 @@ using System.Collections;
 public class QuitAndPauseManager : MonoBehaviour {
 
 	public GameObject player;
+	public GameObject levelManager;
 
 	private bool isQPressed = false;
 	private GUIStyle style;
 	private bool isPaused = false;
+	private float oldTimeScale;
 
 	void Start() {
 		style = new GUIStyle ();
@@ -16,7 +18,7 @@ public class QuitAndPauseManager : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (Input.GetKeyDown ("p") && ! isQPressed) {
+		if (Input.GetKeyDown (KeyCode.P) && ! isQPressed) {
 			if (isPaused) {
 				unpause();
 			} else {
@@ -24,7 +26,7 @@ public class QuitAndPauseManager : MonoBehaviour {
 			}
 			isPaused = !isPaused;
 		}
-		if (Input.GetKeyDown ("q") && !isPaused) {
+		if (Input.GetKeyDown (KeyCode.Q) && !isPaused) {
 			if (isQPressed) {
 				isQPressed = false;
 				unpause();
@@ -33,29 +35,30 @@ public class QuitAndPauseManager : MonoBehaviour {
 				pause();
 			}
 		}
-		if (Input.GetKeyDown ("n") && !isPaused) {
+		if (Input.GetKeyDown (KeyCode.N) && !isPaused) {
 			isQPressed = false;
 			unpause();
 		}
-		if (Input.GetKeyDown ("y") && isQPressed && !isPaused) {
+		if (Input.GetKeyDown (KeyCode.Y) && isQPressed && !isPaused) {
 			Application.LoadLevel("mainMenu");
 			unpause();
 		}
 	}
 
 	void pause() {
-		player.SendMessage ("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+		oldTimeScale = Time.timeScale;
+		Time.timeScale = 0;
 	}
 
 	void unpause() {
-		player.SendMessage ("OnUnpauseGame", SendMessageOptions.DontRequireReceiver);
+		Time.timeScale = oldTimeScale;
 	}
 	
 	void OnGUI (){
 		if (isPaused) {
 			GUI.Label (new Rect (Screen.width / 2.2f, Screen.height / 2.2f, 100, 50), "Paused", style);
 		} else if (isQPressed) {	
-			GUI.Label (new Rect (Screen.width / 2.2f, Screen.height / 2.2f, 100, 50), "Quit? y/n", style);
+			GUI.Label (new Rect (Screen.width / 2.2f, Screen.height / 2.2f, 100, 50), "Quit? Y/N", style);
 		}
 	}
 }
