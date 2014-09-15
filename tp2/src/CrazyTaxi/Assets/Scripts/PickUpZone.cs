@@ -7,14 +7,12 @@ public class PickUpZone : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 		if (other.transform.root.tag == "Player") {
-			Debug.Log ("its in");
 			isInBox = true;
 		}
 	}
 
 	void OnTriggerExit (Collider other) {
 		if (other.transform.root.tag == "Player") {
-			Debug.Log ("its out");
 			isInBox = false;
 		}
 	}
@@ -24,7 +22,7 @@ public class PickUpZone : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (isInBox && Input.GetKey("space")) {
+		if (isInBox && Input.GetKeyDown(KeyCode.Return)) {
 			GameObject car = GameObject.FindGameObjectWithTag("Player");
 			if (car.rigidbody.velocity.magnitude < 0.05) {
 				GameObject.Find("PickUpManager").SendMessage("PickUpModeOn", SendMessageOptions.DontRequireReceiver);

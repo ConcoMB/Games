@@ -2,11 +2,13 @@
 using System.Collections;
 
 public class LevelManager : MonoBehaviour {
-	
+
+	public int winAmount = 5;
 	private int successfulTravels;
 	private float time;
 	private bool isInPlay;
 	private bool lost;
+	private bool won;
 	private GUIStyle lostStyle;
 	private GUIStyle timeStyle;
 
@@ -37,7 +39,7 @@ public class LevelManager : MonoBehaviour {
 		}
 		isInPlay = true;
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
-		time = Vector3.Distance (player.rigidbody.position, drop.transform.position);
+		time = (Vector3.Distance (player.rigidbody.position, drop.transform.position)) * (winAmount - successfulTravels) / winAmount;
 	}
 
 	void EndPickUp() {
@@ -45,9 +47,17 @@ public class LevelManager : MonoBehaviour {
 		if (time > 0) {
 			successfulTravels++;
 		}
+		if (successfulTravels == winAmount) {
+			won = true;
+		}
 	}
 
 	void OnGUI (){
+		if (won) {
+			GUI.Label(new Rect(Screen.width / 2.2f, Screen.height / 2.2f,100,50), "You won!", lostStyle);
+			StartCoroutine(Wait());
+			return;
+		}
 		if (lost) {
 			GUI.Label(new Rect(Screen.width / 2.2f, Screen.height / 2.2f,100,50), "You lost!", lostStyle);
 			StartCoroutine(Wait());
@@ -62,7 +72,6 @@ public class LevelManager : MonoBehaviour {
 
 	IEnumerator Wait(){
 		yield return new WaitForSeconds(3.0f);
-		string lvlName = Application.loadedLevelName;
-		Application.LoadLevel(lvlName);
+		Application.LoadLevel("mainMenu");
 	}
 }

@@ -65,7 +65,7 @@ backLightObject.renderer.material = idleLightMaterial;
 //Brake Trigger
 
 function HandBrake(){
-if (Input.GetButton("Jump")){
+if (Input.GetKey(KeyCode.Space)){
 braked = true;
 }
 else{
@@ -126,3 +126,4 @@ function OnDrawGizmos  () {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere (transform.position+centerOfMass, 0.1);
     }
+    
