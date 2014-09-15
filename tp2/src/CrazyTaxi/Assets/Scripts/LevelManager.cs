@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour {
 
 		timeStyle = new GUIStyle ();
 		timeStyle.font = font;
-		timeStyle.fontSize = 20;
+		timeStyle.fontSize = 30;
 		timeStyle.normal.textColor = Color.white;
 	}
 
@@ -43,7 +43,8 @@ public class LevelManager : MonoBehaviour {
 		}
 		isInPlay = true;
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
-		time = (Vector3.Distance (player.rigidbody.position, drop.transform.position)) * (winAmount - successfulTravels) / winAmount;
+		time = (Vector3.Distance (player.rigidbody.position, drop.transform.position)) * 
+			(winAmount - successfulTravels) / winAmount;
 	}
 
 	void EndPickUp() {
