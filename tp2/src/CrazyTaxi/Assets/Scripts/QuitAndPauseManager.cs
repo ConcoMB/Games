@@ -26,7 +26,7 @@ public class QuitAndPauseManager : MonoBehaviour {
 			}
 			isPaused = !isPaused;
 		}
-		if (Input.GetKeyDown (KeyCode.Q) && !isPaused) {
+		else if (Input.GetKeyDown (KeyCode.Q) && !isPaused) {
 			if (isQPressed) {
 				isQPressed = false;
 				unpause();
@@ -35,11 +35,11 @@ public class QuitAndPauseManager : MonoBehaviour {
 				pause();
 			}
 		}
-		if (Input.GetKeyDown (KeyCode.N) && !isPaused) {
+		else if (Input.GetKeyDown (KeyCode.N) && isQPressed) {
 			isQPressed = false;
-			unpause();
+			unpause ();
 		}
-		if (Input.GetKeyDown (KeyCode.Y) && isQPressed && !isPaused) {
+		else if (Input.GetKeyDown (KeyCode.Y) && isQPressed && !isPaused) {
 			Application.LoadLevel("mainMenu");
 			unpause();
 		}

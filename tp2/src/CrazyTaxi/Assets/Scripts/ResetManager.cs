@@ -8,7 +8,6 @@ public class ResetManager : MonoBehaviour {
 	
 	private bool isRPressed = false;
 	private GUIStyle style;
-	private bool isPaused = false;
 
 	Vector3 startingPosition;
 	Quaternion startingRotation;
@@ -23,17 +22,17 @@ public class ResetManager : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (Input.GetKeyDown (KeyCode.R) && !isPaused) {
+		if (Input.GetKeyDown (KeyCode.R)) {
 			if (isRPressed) {
 				isRPressed = false;
 			} else {
 				isRPressed = true;
 			}
 		}
-		if (Input.GetKeyDown (KeyCode.N) && !isPaused) {
+		else if (Input.GetKeyDown (KeyCode.N)) {
 			isRPressed = false;
 		}
-		if (Input.GetKeyDown (KeyCode.Y) && isRPressed && !isPaused) {
+		else if (Input.GetKeyDown (KeyCode.Y) && isRPressed) {
 			player.transform.position = startingPosition;
 			player.transform.rotation = startingRotation;
 			isRPressed = false;
