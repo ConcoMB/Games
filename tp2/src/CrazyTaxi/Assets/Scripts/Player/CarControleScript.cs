@@ -1,24 +1,24 @@
 using UnityEngine;
 using System.Collections;
 
-public class CarControleScript : MonoBehaviour {		
-
-	public Vector3 centerOfMass = new Vector3(0f,-1.2f,0f);	//Center of mass
+[AddComponentMenu ("CarPhys/Scripts/Car Control Script")]
+public class CarControleScript : MonoBehaviour {
+		
+	public Vector3 centerOfMass;	//Center of mass
 	public WheelCollider dataWheel;	//Wheel Collider from which you want to calculate the speed
 	public float lowestSteerAtSpeed = 50;	//if lowestSteerAtSpeed < currentSpeed the steer Angle = highSpeedSteerAngel
-	public float lowSpeedSteerAngel = 23;	//This could be a high value
-	public float highSpeedSteerAngel = 5;	//This shouldn't be a high value (recomended for stability of car)
-	public float decellarationSpeed = 40;	//How fast the car will decellarate
-	public float maxTorque  = 10;	//Maximum Torque
-	public float currentSpeed = 0;		//Current Speed of car
-	public float topSpeed = 140;		//Highest speed at which the car can go
-	public float maxReverseSpeed = 40; 	//Highest Reverse speed
+	public float lowSpeedSteerAngel = 10;	//This could be a high value
+	public float highSpeedSteerAngel = 1;	//This shouldn't be a high value (recomended for stability of car)
+	public float decellarationSpeed = 30;	//How fast the car will decellarate
+	public float maxTorque  = 50;	//Maximum Torque
+	public float currentSpeed;		//Current Speed of car
+	public float topSpeed = 150;		//Highest speed at which the car can go
+	public float maxReverseSpeed = 50; 	//Highest Reverse speed
 	public GameObject backLightObject;	//Mesh for reverse light
 	public Material idleLightMaterial;	//for idle state
 	public Material brakeLightMaterial; 	//Braked state
 	public Material reverseLightMaterial;	//Reverse state
-//	@HideInInspector
-	bool braked = false;	//Brake trigger
+	public bool  braked = false;	//Brake trigger
 	public float maxBrakeTorque = 100; 	//Braking speed
 	public Texture2D speedOMeterDial;	//GUI Texture for dial
 	public Texture2D speedOMeterPointer;		//GUI Texture for needle
@@ -68,7 +68,7 @@ public class CarControleScript : MonoBehaviour {
 	//Brake Trigger
 	
 	void  HandBrake (){
-		if (Input.GetButton("Jump")){
+		if (Input.GetKey(KeyCode.Space)){
 			braked = true;
 		}
 		else{
@@ -103,16 +103,13 @@ public class CarControleScript : MonoBehaviour {
 		GUI.DrawTexture( new Rect(Screen.width - 300,Screen.height - 300,300,300),speedOMeterDial);
 		float speedFactor = currentSpeed / topSpeed;
 		float rotationAngle;
-		Vector2 pivotPoint;
 		if (currentSpeed >= 0){
 			rotationAngle = Mathf.Lerp(minAnglePointer,maxAnglePointer,speedFactor);
 		}
 		else {
 			rotationAngle = Mathf.Lerp(minAnglePointer,maxAnglePointer,-speedFactor);
 		}
-		pivotPoint = new Vector2(Screen.width - 150 ,Screen.height - 150);
-		GUIUtility.RotateAroundPivot (rotationAngle, pivotPoint); 
-		//GUIUtility.RotateAroundPivot(rotationAngle,Vector2(Screen.width - 150 ,Screen.height - 150));
+		GUIUtility.RotateAroundPivot(rotationAngle, new Vector2(Screen.width - 150 ,Screen.height - 150));
 		GUI.DrawTexture( new Rect(Screen.width - 300,Screen.height - 300,300,300),speedOMeterPointer);
 	}
 	
@@ -123,7 +120,7 @@ public class CarControleScript : MonoBehaviour {
 		if (other.transform != transform && other.contacts.Length != 0){
 			for (int i= 0; i < other.contacts.Length ; i++){
 				//Instantiate(spark,other.contacts[i].point,Quaternion.identity);
-				GameObject clone = (GameObject)Instantiate(collisionSound,other.contacts[i].point,Quaternion.identity);
+				GameObject clone = (GameObject) Instantiate(collisionSound,other.contacts[i].point,Quaternion.identity);
 				clone.transform.parent = transform;
 			}
 		}
@@ -133,5 +130,6 @@ public class CarControleScript : MonoBehaviour {
 		Gizmos.color = Color.white;
 		Gizmos.DrawWireSphere (transform.position+centerOfMass, 0.1f);
 	}
+	
 	
 }
