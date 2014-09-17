@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu ("CarPhys/Scripts/Wheel Script")]
-public class WheelScriptPC : MonoBehaviour {
+public class Wheel : MonoBehaviour {
 		
 	public enum wheelType { Steer , SteerAndMotor , Motor , JustAWheel}; //types of wheel
 	public wheelType typeOfWheel;	//Object of wheelType
@@ -11,7 +11,7 @@ public class WheelScriptPC : MonoBehaviour {
 	public Transform wheelTransform;		//Mesh of the wheel
 	private float speedFactor;	//switch between steer angles
 	private WheelCollider wheelCollider;		//wheel collider attached to the same game object
-	private CarControleScript carScript;		//Scripts attached on the car object at the top
+	private CarController carScript;		//Scripts attached on the car object at the top
 	private float mySidewayFriction;	//default value
 	private float myForwardFriction;	//default value
 	private float slipSidewayFriction;	//Custom value
@@ -21,7 +21,7 @@ public class WheelScriptPC : MonoBehaviour {
 	
 	void  Start (){
 		wheelCollider = gameObject.GetComponent<WheelCollider>();
-		carScript = transform.root.gameObject.GetComponent<CarControleScript>();
+		carScript = transform.root.gameObject.GetComponent<CarController>();
 		SetValues();
 	}
 	

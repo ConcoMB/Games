@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("CarPhys/Scripts/SkiddingScript")]
-public class SkiddingScript : MonoBehaviour
-{
-		
+[AddComponentMenu("CarPhys/Scripts/Skidding")]
+public class Skidding : MonoBehaviour {
 			
 	private float currentFrictionValue;	//Calculates the current friction on the wheel
 	public float skidAt = 1.5f;	//if current friction < skidAt the generate marks

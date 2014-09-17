@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu ("CarPhys/Scripts/Car Control Script")]
-public class CarControleScript : MonoBehaviour {
+[AddComponentMenu ("CarPhys/Scripts/Car Controller")]
+public class CarController : MonoBehaviour {
 		
 	public Vector3 centerOfMass;	//Center of mass
 	public WheelCollider dataWheel;	//Wheel Collider from which you want to calculate the speed

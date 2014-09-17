@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-[AddComponentMenu("CarPhys/Scripts/Car Camera Script")]
+[AddComponentMenu("CarPhys/Scripts/Car Camera")]
 
-public class CarCameraScript : MonoBehaviour {
+public class CarCamera : MonoBehaviour {
 
 
 	public Transform car;	//Car Transform
