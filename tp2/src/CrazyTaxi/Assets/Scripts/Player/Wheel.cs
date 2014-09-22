@@ -4,20 +4,18 @@ using System.Collections;
 [AddComponentMenu ("CarPhys/Scripts/Wheel Script")]
 public class Wheel : MonoBehaviour {
 		
-	public enum wheelType { Steer , SteerAndMotor , Motor , JustAWheel}; //types of wheel
-	public wheelType typeOfWheel;	//Object of wheelType
-	public bool  handBreakable = false;	//can apply handbrakes
-	public bool  invertSteer = false;	//invert the steer control
-	public Transform wheelTransform;		//Mesh of the wheel
-	private float speedFactor;	//switch between steer angles
-	private WheelCollider wheelCollider;		//wheel collider attached to the same game object
-	private CarController carScript;		//Scripts attached on the car object at the top
-	private float mySidewayFriction;	//default value
-	private float myForwardFriction;	//default value
-	private float slipSidewayFriction;	//Custom value
-	private float slipForwardFriction;	//Custom value
-	
-	//Start
+	public enum wheelType { Steer , SteerAndMotor , Motor , JustAWheel}; //
+	public wheelType typeOfWheel;	
+	public bool  handBreakable = false;	
+	public bool  invertSteer = false;	
+	public Transform wheelTransform;		
+	private float speedFactor;	
+	private WheelCollider wheelCollider;		
+	private CarController carScript;		
+	private float mySidewayFriction;	
+	private float myForwardFriction;	
+	private float slipSidewayFriction;	
+	private float slipForwardFriction;	
 	
 	void  Start (){
 		wheelCollider = gameObject.GetComponent<WheelCollider>();
@@ -25,10 +23,7 @@ public class Wheel : MonoBehaviour {
 		SetValues();
 	}
 	
-	//Assign values
-	
 	void  SetValues (){
-		
 		myForwardFriction  = wheelCollider.forwardFriction.stiffness;
 		mySidewayFriction  = wheelCollider.sidewaysFriction.stiffness;
 		slipForwardFriction = 0.05f;
@@ -40,7 +35,6 @@ public class Wheel : MonoBehaviour {
 	void  Update (){
 		WheelPosition();
 		ReverseSlip();
-		//Rotation Control
 		wheelTransform.Rotate(wheelCollider.rpm/60*360*Time.deltaTime,0,0);
 		if (typeOfWheel == wheelType.Steer || typeOfWheel == wheelType.SteerAndMotor)
 			wheelTransform.localEulerAngles = new Vector3(
@@ -49,9 +43,6 @@ public class Wheel : MonoBehaviour {
 				wheelTransform.localEulerAngles.z
 			);
 	}
-	
-	
-	//Triggers to different types of wheels and for handbrake
 	
 	void  FixedUpdate (){
 		if (typeOfWheel == wheelType.Motor || typeOfWheel == wheelType.SteerAndMotor){
@@ -68,8 +59,6 @@ public class Wheel : MonoBehaviour {
 		}
 	}
 	
-	//Position the wheel
-	
 	void  WheelPosition (){
 		RaycastHit hit;
 		Vector3 wheelPos = new Vector3();
@@ -82,9 +71,6 @@ public class Wheel : MonoBehaviour {
 		wheelTransform.position = wheelPos;
 	}
 	
-	
-	//Decellaration
-	
 	void  Decellaration (){
 		if (Input.GetButton("Vertical")==false){
 			wheelCollider.brakeTorque = carScript.decellarationSpeed;
@@ -93,8 +79,6 @@ public class Wheel : MonoBehaviour {
 			wheelCollider.brakeTorque = 0;
 		}
 	}
-	
-	//Steer Control
 	
 	void  SteerControle (){
 		speedFactor = transform.parent.root.rigidbody.velocity.magnitude/carScript.lowestSteerAtSpeed;
@@ -106,11 +90,6 @@ public class Wheel : MonoBehaviour {
 		wheelCollider.steerAngle = currentSteerAngel;
 	}
 	
-	
-	
-	
-	//Torque Control
-	
 	void  TorqueControle (){
 		if (carScript.currentSpeed < carScript.topSpeed && carScript.currentSpeed > -carScript.maxReverseSpeed && !carScript.braked){
 			wheelCollider.motorTorque = carScript.maxTorque * Input.GetAxis("Vertical");
@@ -119,9 +98,7 @@ public class Wheel : MonoBehaviour {
 			wheelCollider.motorTorque =0;
 		}
 	}
-	
-	//Hand Brake
-	
+
 	void  HandBrake (){
 		WheelFrictionCurve sidewaysFriction = wheelCollider.sidewaysFriction;
 		if(carScript.braked){
@@ -149,18 +126,13 @@ public class Wheel : MonoBehaviour {
 		wheelCollider.sidewaysFriction = sidewaysFriction;
 	}
 	
-	//Reverse Slip
-	
 	void  ReverseSlip (){
-		if (carScript.currentSpeed <0){
+		if (carScript.currentSpeed < 0){
 			SetFrontSlip(slipForwardFriction ,slipSidewayFriction); 
-		}
-		else {
+		} else {
 			SetFrontSlip(myForwardFriction ,mySidewayFriction);
 		}
 	}
-	
-	//Slip Settings
 	
 	void  SetRearSlip ( float currentForwardFriction ,  float currentSidewayFriction  ){
 		WheelFrictionCurve forwardFriction = wheelCollider.forwardFriction;
@@ -172,6 +144,7 @@ public class Wheel : MonoBehaviour {
 		wheelCollider.sidewaysFriction = sidewaysFriction;
 		wheelCollider.forwardFriction = forwardFriction;
 	}
+
 	void  SetFrontSlip ( float currentForwardFriction ,  float currentSidewayFriction  ){
 		WheelFrictionCurve forwardFriction = wheelCollider.forwardFriction;
 		WheelFrictionCurve sidewaysFriction = wheelCollider.sidewaysFriction;

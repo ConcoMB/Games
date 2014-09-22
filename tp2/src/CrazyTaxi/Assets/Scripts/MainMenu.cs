@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour {
 		instructionStyle = new GUIStyle ();
 		instructionStyle.fontSize = 20;
 		instructionStyle.font = font;
-		instructionStyle.normal.textColor = Color.yellow;
+		instructionStyle.normal.textColor = Color.red;
 	}
 	
 	void OnGUI(){
@@ -23,10 +23,10 @@ public class MainMenu : MonoBehaviour {
 			Application.LoadLevel("PlayScene");
 		}
 		GUI.Label (new Rect (Screen.width / 6f, Screen.height / 1.4f, 100, 50), 
-		           "Move = arrows / WASD\nBrake = space bar\nPick up / drop = enter\npause = p\nquit = q\nreset position = r", 
+		           "Move = arrows / WASD\nBrake = space bar\nPick up / drop = enter\npause = p\nquit = q\nreset position = r\ntoggle music = m", 
 		           instructionStyle);
 		GUI.Label (new Rect (Screen.width / 1.5f, Screen.height / 1.4f, 100, 50), 
-		           "Successfully deliver 5\npassengers\nBe careful, if you runout\nof time on any\ntravel you loose!", 
+		           "Successfully deliver 5\npassengers\nwhile hitting stuff\nto earn points.\nBe careful, if you run out\nof time on any\ntravel you loose!", 
 		           instructionStyle);
 	}
 }

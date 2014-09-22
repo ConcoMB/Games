@@ -8,6 +8,7 @@ public class ResetManager : MonoBehaviour {
 	
 	private bool isRPressed = false;
 	private GUIStyle style;
+	public GameObject pointsManager;
 
 	Vector3 startingPosition;
 	Quaternion startingRotation;
@@ -35,6 +36,7 @@ public class ResetManager : MonoBehaviour {
 		else if (Input.GetKeyDown (KeyCode.Y) && isRPressed) {
 			player.transform.position = startingPosition;
 			player.transform.rotation = startingRotation;
+			pointsManager.SendMessage("NotifyReset", SendMessageOptions.DontRequireReceiver);
 			isRPressed = false;
 		}
 		

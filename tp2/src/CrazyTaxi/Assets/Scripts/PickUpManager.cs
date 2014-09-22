@@ -4,8 +4,8 @@ using System.Collections;
 public class PickUpManager : MonoBehaviour {
 
 	public GameObject arrow;
+	public bool isInPickupMode;
 
-	private bool isInPickupMode;
 	private GameObject theDropZone;
 
 	void Start() {

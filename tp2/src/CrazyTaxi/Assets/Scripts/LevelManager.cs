@@ -58,6 +58,9 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void OnGUI (){
+		PointsManager pointsScript = GameObject.FindGameObjectWithTag ("PointsManager").GetComponent<PointsManager>();
+
+		GUI.Label(new Rect(Screen.width / 1.3f, Screen.height / 10 - 50, 100, 50), "Points: " + pointsScript.points, timeStyle);
 		if (won) {
 			GUI.Label(new Rect(Screen.width / 2.2f, Screen.height / 2.2f,100,50), "You won!", lostStyle);
 			StartCoroutine(Wait());
