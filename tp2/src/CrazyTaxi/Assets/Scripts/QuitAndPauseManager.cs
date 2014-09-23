@@ -6,8 +6,8 @@ public class QuitAndPauseManager : MonoBehaviour {
 	public Font font; 
 
 	private bool isQPressed = false;
-	private GUIStyle style;
 	private bool isPaused = false;
+	private GUIStyle style;
 	private float oldTimeScale;
 
 	void Start() {
@@ -53,7 +53,11 @@ public class QuitAndPauseManager : MonoBehaviour {
 	void unpause() {
 		Time.timeScale = oldTimeScale;
 	}
-	
+
+	public bool IsPaused() {
+		return isPaused || isQPressed;
+	}
+
 	void OnGUI (){
 		if (isPaused) {
 			GUI.Label (new Rect (Screen.width / 2.2f, Screen.height / 2.2f, 100, 50), "Paused", style);

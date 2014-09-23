@@ -5,13 +5,14 @@ public class ResetManager : MonoBehaviour {
 	
 	public GameObject player;
 	public Font font;
-	
+	public GameObject pointsManager;
+	public GameObject quitAndPauseManager;
+
 	private bool isRPressed = false;
 	private GUIStyle style;
-	public GameObject pointsManager;
-
-	Vector3 startingPosition;
-	Quaternion startingRotation;
+	private Vector3 startingPosition;
+	private Quaternion startingRotation;
+	private QuitAndPauseManager quitAndPauseManagerScript;
 
 	void Start() {
 		startingPosition = player.transform.position;
@@ -20,9 +21,13 @@ public class ResetManager : MonoBehaviour {
 		style.fontSize = 40;
 		style.font = font;
 		style.normal.textColor = Color.white;
+		quitAndPauseManagerScript = (QuitAndPauseManager)quitAndPauseManager.GetComponent<QuitAndPauseManager> ();
 	}
 	
 	void Update() {
+		if (quitAndPauseManagerScript.IsPaused ()) {
+				return;
+		}
 		if (Input.GetKeyDown (KeyCode.R)) {
 			if (isRPressed) {
 				isRPressed = false;
