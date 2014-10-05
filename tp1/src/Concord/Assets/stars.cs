@@ -12,7 +12,6 @@ public class stars : MonoBehaviour {
 	}
 
 	void SetupSpeed() {
-		Debug.Log ("Level particle");
 		particleSystem.startSpeed = Random.Range (startSpeed * level, startSpeed * level * 1.5f);
 	}
 

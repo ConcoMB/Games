@@ -18,6 +18,7 @@ public class Skelleton : MonoBehaviour {
                       rotationSpeed * Time.deltaTime);
 		if (distance < 2) {
 			animation.Play ("attack");
+
 		} else if (distance < 10) {
 			animation.Play ("run");
 			transform.position += transform.forward * moveSpeed * Time.deltaTime;
