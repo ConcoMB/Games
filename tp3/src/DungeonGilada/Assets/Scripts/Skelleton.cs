@@ -12,9 +12,17 @@ public class Skelleton : MonoBehaviour {
 	}
 	
 	void Update () {
+		float distance = Vector3.Distance (transform.position, target.position);
 		transform.rotation = Quaternion.Slerp (transform.rotation, 
-		                                      Quaternion.LookRotation (target.position - transform.position), 
-		                                      rotationSpeed * Time.deltaTime);
-//		transform.position = transform.forward * moveSpeed * Time.deltaTime;
+                      Quaternion.LookRotation (target.position - transform.position), 
+                      rotationSpeed * Time.deltaTime);
+		if (distance < 2) {
+			animation.Play ("attack");
+		} else if (distance < 10) {
+			animation.Play ("run");
+			transform.position += transform.forward * moveSpeed * Time.deltaTime;
+		} else {
+			animation.Play("idle");
+		}
 	}
 }
