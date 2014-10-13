@@ -18,8 +18,9 @@ public class Knight : MonoBehaviour {
 	public float inputJump;
 	private float shift_axis_late;
 	private float animLayer2;
+	private bool getHit;
 
-	public enum Status{Idle, Attacking, Defending};
+	public enum Status{Idle, Hit, Attacking, Defending};
 
 	void Start () {
 		animator = GetComponent<Animator>();
@@ -42,6 +43,10 @@ public class Knight : MonoBehaviour {
 			StartCoroutine(WaitForAttackToEnd());
 			StartCoroutine ("TimerClickTime");
 		} 
+		if (getHit) {
+			status = Status.Hit;
+			StartCoroutine ("TimerClickTime");
+		} 
 		if (animator) {	
 			shift_axis_late = Mathf.Clamp((shift_axis_late - 0.005f), 0.0f, 1.1f);
 			animLayer2 = Mathf.Clamp((animLayer2 - 0.01f), 0.0f, 1.0f);
@@ -51,6 +56,7 @@ public class Knight : MonoBehaviour {
 			animator.SetFloat("Axis_Vertical", inputY);
 			animator.SetFloat("Jump_axis", inputJump);
 			animator.SetBool("RightMouse", rightMouseClick);
+			animator.SetBool ("GetHit", getHit);
 		}
 		if (canControl) {
 			inputX = Input.GetAxis("Horizontal");
@@ -83,10 +89,20 @@ public class Knight : MonoBehaviour {
 			leftMouseClicks = 0f;
 		}
 	}	
+	
+	void Hit(int hit) {
+		getHit = true;
+		health -= (hit - armor);
+		if (health <= 0) {
+			// perdiste
+		}
+
+	}
 
 	IEnumerator TimerClickTime(){ 
 		yield return new WaitForSeconds(0.1f);
 		leftMouseClick=false;
+		getHit = false;
 		yield return null;
 	}
 
