@@ -5,10 +5,8 @@ public class PlayerDataManager : MonoBehaviour {
 
 	public Font font;
 	public GameObject knightGO;
-	
 	private GUIStyle style;
 	private GUIStyle levelUpStyle;
-
 	private Knight knight;
 	private bool levelUp = false;
 
@@ -42,6 +40,9 @@ public class PlayerDataManager : MonoBehaviour {
 	IEnumerator WaitLevelUp() {
 		yield return new WaitForSeconds(3.0f);
 		levelUp = false;
+		GUI.Label (new Rect (Screen.width / 1.2f, Screen.height / 9f, 100, 50), 
+		           "Health: " + knight.health, 
+		           style);
 	}
 
 	void LevelUp() {

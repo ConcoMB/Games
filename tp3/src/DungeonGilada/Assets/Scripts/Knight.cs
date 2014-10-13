@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Knight : MonoBehaviour {
 
+	public PlayerDataManager manager;
 	public Animator animator;
 	public GameObject playerDataManagerObj;
 	public bool leftMouseClick=false;
@@ -65,6 +66,7 @@ public class Knight : MonoBehaviour {
 			animator.SetFloat("Jump_axis", inputJump);
 			animator.SetBool("RightMouse", rightMouseClick);
 			animator.SetBool ("GetHit", getHit);
+
 		}
 		if (canControl) {
 			inputX = Input.GetAxis("Horizontal");
