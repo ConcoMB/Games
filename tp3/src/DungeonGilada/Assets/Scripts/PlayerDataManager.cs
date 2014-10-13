@@ -4,11 +4,14 @@ using System.Collections;
 public class PlayerDataManager : MonoBehaviour {
 
 	public Font font;
+	public GameObject knightGO;
 	
 	private GUIStyle style;
-	private int gold = 0;
+
+	private Knight knight;
 
 	void Start(){
+		knight = knightGO.GetComponent<Knight>();
 		style = new GUIStyle ();
 		style.fontSize = 30;
 		style.font = font;
@@ -16,12 +19,15 @@ public class PlayerDataManager : MonoBehaviour {
 	}
 	
 	void OnGUI(){
+		GUI.Label (new Rect (Screen.width / 1.2f, Screen.height / 8f, 100, 50), 
+		           "Gold: " + knight.gold, 
+		           style);
 		GUI.Label (new Rect (Screen.width / 1.2f, Screen.height / 15f, 100, 50), 
-		           "Gold: " + gold, 
+		           "Level: " + knight.level, 
 		           style);
 	}
 
-	void EarnGold(int earnGold) {
-		gold += earnGold;
+	void LevelUp() {
+
 	}
 }
