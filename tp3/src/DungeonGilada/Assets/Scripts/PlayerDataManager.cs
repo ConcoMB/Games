@@ -55,25 +55,28 @@ public class PlayerDataManager : MonoBehaviour {
 	}
 
 	void UpdateHealth(){
-		int diffhelth = knight.health / knight.maxHealth;
+		double diffhelth = (double)knight.health / (double)knight.maxHealth;
+		print ("knight.maxHealth " + knight.maxHealth);
+		print ("knight.healt " + knight.health);
+		print ("diffhelth " + diffhelth);
 		Texture2D aTexture; 
-		if (diffhelth == 1) {
+		if (diffhelth == 1f) {
 			aTexture = aTexture10;
-		}else if (diffhelth > 0.9){
+		}else if (diffhelth > 0.9f){
 			aTexture = aTexture9;
-		}else if (diffhelth > 0.8){
+		}else if (diffhelth > 0.8f){
 			aTexture = aTexture8;
-		}else if (diffhelth > 0.7){
+		}else if (diffhelth > 0.7f){
 			aTexture = aTexture7;
-		}else if (diffhelth > 0.6){
+		}else if (diffhelth > 0.6f){
 			aTexture = aTexture6;
-		}else if (diffhelth > 0.5){
+		}else if (diffhelth > 0.5f){
 			aTexture = aTexture5;
-		}else if (diffhelth > 0.4){
+		}else if (diffhelth > 0.4f){
 			aTexture = aTexture4;
-		}else if (diffhelth > 0.3){
+		}else if (diffhelth > 0.3f){
 			aTexture = aTexture3;
-		}else if (diffhelth > 0.2){
+		}else if (diffhelth > 0.2f){
 			aTexture = aTexture2;
 		}else{
 			aTexture = aTexture1;
