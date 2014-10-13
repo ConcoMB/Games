@@ -64,6 +64,9 @@ public class Skelleton : MonoBehaviour {
 	}
 
 	void Hit(int strenght) {
+		if (status == Status.Dead) {
+			return;
+		}
 		Debug.Log (health);
 		health -= strenght;
 		if (health < 0) {

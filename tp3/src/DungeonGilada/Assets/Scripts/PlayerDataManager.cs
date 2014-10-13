@@ -45,6 +45,7 @@ public class PlayerDataManager : MonoBehaviour {
 //		           style);
 		GUI.DrawTexture(new Rect (Screen.width / 16f, Screen.height / 22f, 400, 50),
 		                aTexture10, ScaleMode.ScaleToFit, true, 10.0f);
+
 		if (levelUp) {
 			StartCoroutine(WaitLevelUp());
 			GUI.Label (new Rect (Screen.width / 2.4f, Screen.height / 2.2f, 200, 100), 
