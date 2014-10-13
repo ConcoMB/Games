@@ -10,7 +10,7 @@ public class Knight : MonoBehaviour {
 	public bool rightMouseClick=false;
 	public bool canControl=true;
 	public float leftMouseClicks;
-	public int health = 10;
+	public int health = 3;
 	public int maxHealth = 10;
 	public int strength = 1;
 	public int armor = 0;
@@ -24,6 +24,7 @@ public class Knight : MonoBehaviour {
 	private float animLayer2;
 	private bool getHit;
 	public int gold = 0;
+	public int levelRate = 5;
 	private PlayerDataManager playerDataManager;
 
 	public enum Status{Idle, Hit, Attacking, Defending};
@@ -107,7 +108,7 @@ public class Knight : MonoBehaviour {
 
 	void Experience(int exp) {
 		expPoints += exp;
-		if (expPoints >= level * 10) {
+		if (expPoints >= level * levelRate) {
 			LevelUp();
 		}
 	}
