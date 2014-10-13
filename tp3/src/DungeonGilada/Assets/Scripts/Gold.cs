@@ -13,7 +13,6 @@ public class Gold : MonoBehaviour {
 	
 	void Update () {
 		float distance = Vector3.Distance (transform.position, target.position);
-		Debug.Log ("gold: " + distance);
 		if (distance < 0.5) {
 			manager.SendMessage("EarnGold", value, SendMessageOptions.DontRequireReceiver);
 			renderer.enabled = false;

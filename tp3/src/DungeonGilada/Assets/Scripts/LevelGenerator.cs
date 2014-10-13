@@ -20,11 +20,11 @@ public class LevelGenerator : MonoBehaviour {
 					collission = true;
 					index = (index + 1) % rooms.Length;
 					Destroy (room.gameObject);
-				}else{
-					mountPoint = newMountPoint;
+				}else{					mountPoint = newMountPoint;
 					collission = false;
 				}
 			} while(collission);
+
 		}
 	}
 }
