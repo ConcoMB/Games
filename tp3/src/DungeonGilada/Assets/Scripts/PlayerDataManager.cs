@@ -29,6 +29,9 @@ public class PlayerDataManager : MonoBehaviour {
 		GUI.Label (new Rect (Screen.width / 1.2f, Screen.height / 15f, 100, 50), 
 		           "Level: " + knight.level, 
 		           style);
+		GUI.Label (new Rect (Screen.width / 1.2f, Screen.height / 9f, 100, 50), 
+		           "Health: " + knight.health, 
+		           style);
 		if (levelUp) {
 			StartCoroutine(WaitLevelUp());
 			GUI.Label (new Rect (Screen.width / 2.4f, Screen.height / 2.2f, 200, 100), 
@@ -40,9 +43,6 @@ public class PlayerDataManager : MonoBehaviour {
 	IEnumerator WaitLevelUp() {
 		yield return new WaitForSeconds(3.0f);
 		levelUp = false;
-		GUI.Label (new Rect (Screen.width / 1.2f, Screen.height / 9f, 100, 50), 
-		           "Health: " + knight.health, 
-		           style);
 	}
 
 	void LevelUp() {
