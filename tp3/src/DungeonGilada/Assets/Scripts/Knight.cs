@@ -4,14 +4,19 @@ using System.Collections.Generic;
 
 public class Knight : MonoBehaviour {
 
+	public PlayerDataManager manager;
 	public Animator animator;
+	public GameObject playerDataManagerObj;
 	public bool leftMouseClick=false;
 	public bool rightMouseClick=false;
 	public bool canControl=true;
 	public float leftMouseClicks;
-	public int health = 10;
+	public int health = 3;
+	public int maxHealth = 10;
 	public int strength = 1;
 	public int armor = 0;
+	public int expPoints = 0;
+	public int level = 1;
 	public Status status = Status.Idle;
 	public float inputX;
 	public float inputY;
@@ -19,11 +24,15 @@ public class Knight : MonoBehaviour {
 	private float shift_axis_late;
 	private float animLayer2;
 	private bool getHit;
+	public int gold = 0;
+	public int levelRate = 5;
+	private PlayerDataManager playerDataManager;
 
 	public enum Status{Idle, Hit, Attacking, Defending};
 
 	void Start () {
 		animator = GetComponent<Animator>();
+		playerDataManager = playerDataManagerObj.GetComponent<PlayerDataManager>();
 	}
 	
 	void OnAnimatorIK(){
@@ -57,6 +66,7 @@ public class Knight : MonoBehaviour {
 			animator.SetFloat("Jump_axis", inputJump);
 			animator.SetBool("RightMouse", rightMouseClick);
 			animator.SetBool ("GetHit", getHit);
+
 		}
 		if (canControl) {
 			inputX = Input.GetAxis("Horizontal");
@@ -94,9 +104,29 @@ public class Knight : MonoBehaviour {
 		getHit = true;
 		health -= (hit - armor);
 		if (health <= 0) {
-			// perdiste
-		}
+			StartCoroutine(WaitForLost());
 
+		}
+	}
+
+	void Experience(int exp) {
+		expPoints += exp;
+		if (expPoints >= level * levelRate) {
+			LevelUp();
+		}
+	}
+
+	void LevelUp() {
+		expPoints = 0;
+		level++;
+		maxHealth += level * 10;
+		health += level * 10;
+		strength += level;
+		playerDataManager.SendMessage ("LevelUp", SendMessageOptions.DontRequireReceiver);
+	}
+
+	void EarnGold(int earnGold) {
+		gold += earnGold;
 	}
 
 	IEnumerator TimerClickTime(){ 
@@ -127,6 +157,12 @@ public class Knight : MonoBehaviour {
 	IEnumerator WaitForAttackToEnd() {
 		yield return new WaitForSeconds(1f);
 		status = Status.Idle;
+		yield return null;	
+	}
+
+	IEnumerator WaitForLost() {
+		yield return new WaitForSeconds(3f);
+		Application.LoadLevel("Lost");
 		yield return null;	
 	}
 }

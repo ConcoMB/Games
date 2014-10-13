@@ -8,6 +8,7 @@ public class Skelleton : MonoBehaviour {
 	public int health = 10;
 	public float attackRate = 4.0f;
 	public int strength = 1;
+	public int expPoints = 1;
 
 	private float counter = 0.0f;
 	private Transform target;
@@ -63,10 +64,14 @@ public class Skelleton : MonoBehaviour {
 	}
 
 	void Hit(int strenght) {
+		if (status == Status.Dead) {
+			return;
+		}
 		Debug.Log (health);
 		health -= strenght;
 		if (health < 0) {
 			deadStart = true;
+			knight.SendMessage("Experience", expPoints, SendMessageOptions.DontRequireReceiver);
 		} else {
 			animation.Play ("gethit");
 			status = Status.Hit;
