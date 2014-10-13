@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Knight : MonoBehaviour {
 
+	public PlayerDataManager manager;
 	public Animator animator;
 	public bool leftMouseClick=false;
 	public bool rightMouseClick=false;
@@ -57,6 +58,7 @@ public class Knight : MonoBehaviour {
 			animator.SetFloat("Jump_axis", inputJump);
 			animator.SetBool("RightMouse", rightMouseClick);
 			animator.SetBool ("GetHit", getHit);
+
 		}
 		if (canControl) {
 			inputX = Input.GetAxis("Horizontal");
@@ -93,6 +95,7 @@ public class Knight : MonoBehaviour {
 	void Hit(int hit) {
 		getHit = true;
 		health -= (hit - armor);
+		manager.SendMessage("UpdateHealth", health, SendMessageOptions.DontRequireReceiver);
 		if (health <= 0) {
 			// perdiste
 		}
