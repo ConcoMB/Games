@@ -104,7 +104,8 @@ public class Knight : MonoBehaviour {
 		getHit = true;
 		health -= (hit - armor);
 		if (health <= 0) {
-			// perdiste
+			StartCoroutine(WaitForLost());
+
 		}
 	}
 
@@ -155,6 +156,12 @@ public class Knight : MonoBehaviour {
 	IEnumerator WaitForAttackToEnd() {
 		yield return new WaitForSeconds(1f);
 		status = Status.Idle;
+		yield return null;	
+	}
+
+	IEnumerator WaitForLost() {
+		yield return new WaitForSeconds(3f);
+		Application.LoadLevel("Lost");
 		yield return null;	
 	}
 }
