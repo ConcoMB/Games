@@ -10,10 +10,21 @@ public class LevelGenerator : MonoBehaviour {
 	void Start () {
 		GameObject mountPoint = spawnRoom.transform.FindChild("Mount Point").gameObject;
 		for (int i = 0; i < 5; i++) {
-			int index = Random.Range(0, rooms.Length - 1);
-			Debug.Log (index);
-			Transform room = (Transform) Instantiate(rooms[index], mountPoint.transform.position, mountPoint.transform.rotation);
-			mountPoint = room.FindChild("Mount Point").gameObject;
+			bool collission = false;
+			int index = Random.Range(0, rooms.Length);
+			do {
+				Transform room = (Transform) Instantiate(rooms[index], mountPoint.transform.position, mountPoint.transform.rotation);
+				GameObject newMountPoint = room.FindChild("Mount Point").gameObject;
+				if (Physics.Raycast(newMountPoint.transform.position, newMountPoint.transform.TransformDirection(Vector3.forward), 2)) {
+					Debug.Log ("hit");
+					collission = true;
+					index = (index + 1) % rooms.Length;
+					Destroy (room.gameObject);
+				}else{
+					mountPoint = newMountPoint;
+					collission = false;
+				}
+			} while(collission);
 		}
 	}
 }
