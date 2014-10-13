@@ -5,9 +5,6 @@ public class DanceSkelleton : MonoBehaviour {
 
 	void Start () {
 		animation.Play ("dance");
-	}
-	
-	void Update () {
-	
+		animation["dance"].wrapMode = WrapMode.Loop;
 	}
 }
