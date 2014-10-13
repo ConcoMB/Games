@@ -103,6 +103,7 @@ public class Knight : MonoBehaviour {
 	void Hit(int hit) {
 		getHit = true;
 		health -= (hit - armor);
+		playerDataManager.SendMessage ("UpdateHealth", SendMessageOptions.DontRequireReceiver);
 		if (health <= 0) {
 			StartCoroutine(WaitForLost());
 
@@ -145,11 +146,12 @@ public class Knight : MonoBehaviour {
 	}
 
 	void Attack() {
-		foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("enemy")) {
-			float distance = Vector3.Distance(enemy.transform.position, transform.position);
-			if (distance < 4) {
-				enemy.SendMessage("Hit", strength, SendMessageOptions.DontRequireReceiver);
-			}
+		RaycastHit hit;
+		Vector3 fwd = transform.TransformDirection(Vector3.forward);
+		if (Physics.Raycast (transform.position, fwd, out hit, 4.0f)) {
+			Debug.Log ("hit");
+			GameObject enemy = hit.collider.gameObject;
+			enemy.SendMessage("Hit", strength, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 
