@@ -103,7 +103,6 @@ public class Knight : MonoBehaviour {
 	void Hit(int hit) {
 		getHit = true;
 		health -= (hit - armor);
-		playerDataManager.SendMessage ("UpdateHealth", SendMessageOptions.DontRequireReceiver);
 		if (health <= 0) {
 			StartCoroutine(WaitForLost());
 
