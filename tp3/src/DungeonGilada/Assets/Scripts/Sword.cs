@@ -17,7 +17,6 @@ public class Sword : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		Debug.Log (other.tag);
 		if (other.tag == "enemy" && knight.status == Knight.Status.Attacking) {
-			Debug.Log ("holis");
 			other.SendMessage("Hit", knight.strength, SendMessageOptions.DontRequireReceiver);
 		}
 	}

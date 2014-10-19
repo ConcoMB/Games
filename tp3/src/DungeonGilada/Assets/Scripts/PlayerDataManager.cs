@@ -9,7 +9,8 @@ public class PlayerDataManager : MonoBehaviour {
 	private GUIStyle levelUpStyle;
 	private Knight knight;
 	private bool levelUp = false;
-
+	private bool strengthUp = false;
+	private bool armorUp = false;
 	public Texture2D barBack;
 	public Texture2D barFront;
 
@@ -46,21 +47,56 @@ public class PlayerDataManager : MonoBehaviour {
 
 
 		if (levelUp) {
-			StartCoroutine(WaitLevelUp());
+			StartCoroutine(WaitPowerUp("level"));
 			GUI.Label (new Rect (Screen.width / 2.4f, Screen.height / 2.2f, 200, 100), 
 			           "Level up!", 
+			           levelUpStyle);
+		}
+		if (armorUp) {
+			StartCoroutine(WaitPowerUp("armor"));
+			GUI.Label (new Rect (Screen.width / 2.4f, Screen.height / 2.2f, 200, 100), 
+			           "Armor up!", 
+			           levelUpStyle);
+		}
+		if (strengthUp) {
+			StartCoroutine(WaitPowerUp("strength"));
+			GUI.Label (new Rect (Screen.width / 2.4f, Screen.height / 2.2f, 200, 100), 
+			           "Strength up!", 
 			           levelUpStyle);
 		}
 	}
 
 
-	IEnumerator WaitLevelUp() {
+	IEnumerator WaitPowerUp(string flag) {
 		yield return new WaitForSeconds(3.0f);
-		levelUp = false;
-
+		switch (flag) {
+		case "strength":
+			strengthUp = false;
+			break;
+		case "armor":
+			armorUp = false;
+			break;
+		case "level":
+			levelUp = false;
+			break;
+		}
 	}
 
 	void LevelUp() {
 		levelUp = true;
+		armorUp = false;
+		strengthUp = false;
+	}
+
+	void ArmorUp() {
+		levelUp = false;
+		armorUp = true;
+		strengthUp = false;
+	}
+
+	void StrengthUp() {
+		levelUp = false;
+		armorUp = false;
+		strengthUp = true;
 	}
 }
