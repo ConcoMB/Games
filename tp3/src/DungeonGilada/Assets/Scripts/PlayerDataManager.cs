@@ -9,17 +9,9 @@ public class PlayerDataManager : MonoBehaviour {
 	private GUIStyle levelUpStyle;
 	private Knight knight;
 	private bool levelUp = false;
-	public Texture2D aTexture1;
-	public Texture2D aTexture2;
-	public Texture2D aTexture3;
-	public Texture2D aTexture4;
-	public Texture2D aTexture5;
-	public Texture2D aTexture6;
-	public Texture2D aTexture7;
-	public Texture2D aTexture8;
-	public Texture2D aTexture9;
-	public Texture2D aTexture10;
 
+	public Texture2D barBack;
+	public Texture2D barFront;
 
 	void Start(){
 		knight = knightGO.GetComponent<Knight>();
@@ -40,11 +32,18 @@ public class PlayerDataManager : MonoBehaviour {
 		GUI.Label (new Rect (Screen.width / 1.2f, Screen.height / 15f, 100, 50), 
 		           "Level: " + knight.level, 
 		           style);
-//		GUI.Label (new Rect (Screen.width / 9f, Screen.height / 9f, 100, 50), 
-//		           "Health: " + knight.health, 
-//		           style);
-		GUI.DrawTexture(new Rect (Screen.width / 16f, Screen.height / 22f, 400, 50),
-		                aTexture10, ScaleMode.ScaleToFit, true, 10.0f);
+
+		GUI.BeginGroup (new Rect (Screen.width / 16f, Screen.height / 22f, 500 , 70));
+
+			GUI.DrawTexture (new Rect (Screen.width / 16f, Screen.height / 22f, 400 , 50), barBack);
+			float diffhelth = (float)knight.health / (float)knight.maxHealth;
+
+			GUI.BeginGroup (new Rect (Screen.width / 600f, Screen.height / 65f, 500 * diffhelth, 50));
+				GUI.DrawTexture (new Rect (Screen.width / 16f, Screen.height / 22f, 400 , 50), barFront);
+			GUI.EndGroup();
+
+		GUI.EndGroup();
+
 
 		if (levelUp) {
 			StartCoroutine(WaitLevelUp());
@@ -54,36 +53,6 @@ public class PlayerDataManager : MonoBehaviour {
 		}
 	}
 
-	void UpdateHealth(){
-		double diffhelth = (double)knight.health / (double)knight.maxHealth;
-		print ("knight.maxHealth " + knight.maxHealth);
-		print ("knight.healt " + knight.health);
-		print ("diffhelth " + diffhelth);
-		Texture2D aTexture; 
-		if (diffhelth == 1f) {
-			aTexture = aTexture10;
-		}else if (diffhelth > 0.9f){
-			aTexture = aTexture9;
-		}else if (diffhelth > 0.8f){
-			aTexture = aTexture8;
-		}else if (diffhelth > 0.7f){
-			aTexture = aTexture7;
-		}else if (diffhelth > 0.6f){
-			aTexture = aTexture6;
-		}else if (diffhelth > 0.5f){
-			aTexture = aTexture5;
-		}else if (diffhelth > 0.4f){
-			aTexture = aTexture4;
-		}else if (diffhelth > 0.3f){
-			aTexture = aTexture3;
-		}else if (diffhelth > 0.2f){
-			aTexture = aTexture2;
-		}else{
-			aTexture = aTexture1;
-		}
-		GUI.DrawTexture(new Rect (Screen.width / 9f, Screen.height / 9f, 100, 50),
-		                aTexture, ScaleMode.ScaleToFit, true, 10.0f);
-	}
 
 	IEnumerator WaitLevelUp() {
 		yield return new WaitForSeconds(3.0f);
