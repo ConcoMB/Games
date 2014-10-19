@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Knight : MonoBehaviour {
 
+	public AudioClip swordhit;
 	public PlayerDataManager manager;
 	public Animator animator;
 	public GameObject playerDataManagerObj;
@@ -33,6 +34,7 @@ public class Knight : MonoBehaviour {
 	void Start () {
 		animator = GetComponent<Animator>();
 		playerDataManager = playerDataManagerObj.GetComponent<PlayerDataManager>();
+
 	}
 	
 	void OnAnimatorIK(){
@@ -146,6 +148,7 @@ public class Knight : MonoBehaviour {
 
 	void Attack() {
 		RaycastHit hit;
+		audio.PlayOneShot (swordhit);
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 		if (Physics.Raycast (transform.position, fwd, out hit, 4.0f)) {
 			Debug.Log ("hit");
