@@ -34,6 +34,8 @@ public class Skelleton : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (true)
+						return;
 		if (status != Status.Idle) {
 			return;
 		}
@@ -73,6 +75,7 @@ public class Skelleton : MonoBehaviour {
 			deadStart = true;
 			collider.enabled = false;
 			knight.SendMessage("Experience", expPoints, SendMessageOptions.DontRequireReceiver);
+			status = Status.Idle;
 		} else {
 			animation.Play ("gethit");
 			status = Status.Hit;

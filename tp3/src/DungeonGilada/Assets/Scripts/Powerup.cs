@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Powerup : MonoBehaviour {
 
-	public Knight knight;
 	public int value = 1;
 	public string type;
 	public string rotateAxis;
 	public float rotationAmount = 45;
 	private Transform target;
-	
+	private Knight knight;
+
 	void Start () {
 		GameObject go = GameObject.FindGameObjectWithTag ("Player");
 		target = go.transform;
