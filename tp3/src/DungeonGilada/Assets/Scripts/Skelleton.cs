@@ -71,6 +71,7 @@ public class Skelleton : MonoBehaviour {
 		health -= strenght;
 		if (health < 0) {
 			deadStart = true;
+			collider.enabled = false;
 			knight.SendMessage("Experience", expPoints, SendMessageOptions.DontRequireReceiver);
 		} else {
 			animation.Play ("gethit");
