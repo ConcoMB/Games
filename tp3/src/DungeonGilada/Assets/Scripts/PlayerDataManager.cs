@@ -33,7 +33,7 @@ public class PlayerDataManager : MonoBehaviour {
 		           "Level: " + knight.level, 
 		           style);
 
-		GUI.BeginGroup (new Rect (Screen.width / 16f, Screen.height / 22f, 500 , 70));
+		GUI.BeginGroup (new Rect (Screen.width / 40f - 40f, Screen.height / 40f, 500 , 70));
 
 			GUI.DrawTexture (new Rect (Screen.width / 16f, Screen.height / 22f, 400 , 50), barBack);
 			float diffhelth = (float)knight.health / (float)knight.maxHealth;
