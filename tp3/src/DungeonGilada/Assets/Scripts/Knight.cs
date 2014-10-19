@@ -166,4 +166,21 @@ public class Knight : MonoBehaviour {
 		Application.LoadLevel("Lost");
 		yield return null;	
 	}
+
+	void PowerupStrength(int value) {
+		strength += value;
+		playerDataManager.SendMessage ("StrengthUp", SendMessageOptions.DontRequireReceiver);
+	}
+
+	void PowerupArmor(int value) {
+		armor += value;
+		playerDataManager.SendMessage ("ArmorUp", SendMessageOptions.DontRequireReceiver);
+	}
+
+	void PowerupHealth(int value) {
+		health += value;
+		if (health > maxHealth) {
+			health = maxHealth;
+		}
+	}
 }
