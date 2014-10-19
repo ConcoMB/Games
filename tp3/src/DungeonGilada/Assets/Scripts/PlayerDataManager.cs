@@ -34,13 +34,12 @@ public class PlayerDataManager : MonoBehaviour {
 		           "Level: " + knight.level, 
 		           style);
 
-		GUI.BeginGroup (new Rect (Screen.width / 40f - 40f, Screen.height / 40f, 500 , 70));
-
-			GUI.DrawTexture (new Rect (Screen.width / 16f, Screen.height / 22f, 400 , 50), barBack);
+		GUI.BeginGroup (new Rect (Screen.width / 40f - 40f, Screen.height / 40f, 500 , 70f));
+		    GUI.DrawTexture (new Rect (58f, 21f, 400 , 50), barBack);
 			float diffhelth = (float)knight.health / (float)knight.maxHealth;
-
-			GUI.BeginGroup (new Rect (Screen.width / 600f, Screen.height / 65f, 500 * diffhelth, 50));
-				GUI.DrawTexture (new Rect (Screen.width / 16f, Screen.height / 22f, 400 , 50), barFront);
+			print ( "diffhelth: " + diffhelth );
+			GUI.BeginGroup (new Rect(40.2f, 9f, 377 * diffhelth, 50f));
+		       GUI.DrawTexture (new Rect (59f, 17f, 400 , 50), barFront);
 			GUI.EndGroup();
 
 		GUI.EndGroup();
