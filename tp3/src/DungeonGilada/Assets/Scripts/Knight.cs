@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class Knight : MonoBehaviour {
 
 	public AudioClip swordhit;
@@ -148,7 +149,9 @@ public class Knight : MonoBehaviour {
 
 	void Attack() {
 		RaycastHit hit;
-		audio.PlayOneShot (swordhit);
+		audio.PlayOneShot(swordhit, 1);
+		audio.Play ();
+		print ("### swordhit");
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 		if (Physics.Raycast (transform.position, fwd, out hit, 4.0f)) {
 			Debug.Log ("hit");

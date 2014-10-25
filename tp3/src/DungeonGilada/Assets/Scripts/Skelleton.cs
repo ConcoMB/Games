@@ -34,8 +34,8 @@ public class Skelleton : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (true)
-						return;
+//		if (true)
+//						return;
 		if (status != Status.Idle) {
 			return;
 		}
