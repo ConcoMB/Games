@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Skelleton : MonoBehaviour {
 
+	public AudioClip swordhit;
+	public AudioClip skelletonsword;
 	public int moveSpeed = 3;
 	public int rotationSpeed = 3;
 	public int health = 10;
@@ -52,7 +54,7 @@ public class Skelleton : MonoBehaviour {
 			if (counter > attackRate) {
 				status = Status.Attacking;
 				animation.Play ("attack");	
-				audio.Play ();
+				AudioSource.PlayClipAtPoint(skelletonsword, transform.position);
 				knight.SendMessage("Hit", strength, SendMessageOptions.DontRequireReceiver);
 				counter = 0.0f;
 			} else {
@@ -79,6 +81,7 @@ public class Skelleton : MonoBehaviour {
 			status = Status.Idle;
 		} else {
 			animation.Play ("gethit");
+			AudioSource.PlayClipAtPoint (swordhit, transform.position	);
 			status = Status.Hit;
 		}
 	}
