@@ -52,6 +52,7 @@ public class Skelleton : MonoBehaviour {
 			if (counter > attackRate) {
 				status = Status.Attacking;
 				animation.Play ("attack");	
+				audio.Play ();
 				knight.SendMessage("Hit", strength, SendMessageOptions.DontRequireReceiver);
 				counter = 0.0f;
 			} else {
