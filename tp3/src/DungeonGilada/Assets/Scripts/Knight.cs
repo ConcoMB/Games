@@ -109,7 +109,7 @@ public class Knight : MonoBehaviour {
 		if (health <= 0) {
 			StartCoroutine(WaitForLost());
 		}
-		AudioSource.PlayClipAtPoint (swordhit, transform.position);
+		AudioSource.PlayClipAtPoint (swordhit, transform.position	);
 	}
 
 	void Experience(int exp) {
