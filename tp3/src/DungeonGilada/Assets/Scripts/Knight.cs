@@ -108,8 +108,8 @@ public class Knight : MonoBehaviour {
 		health -= (hit - armor);
 		if (health <= 0) {
 			StartCoroutine(WaitForLost());
-
 		}
+		AudioSource.PlayClipAtPoint (swordhit, transform.position);
 	}
 
 	void Experience(int exp) {
@@ -149,7 +149,6 @@ public class Knight : MonoBehaviour {
 
 	void Attack() {
 		RaycastHit hit;
-		audio.PlayOneShot(swordhit, 1);
 		audio.Play ();
 		print ("### swordhit");
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
