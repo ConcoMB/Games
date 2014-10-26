@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class Knight : MonoBehaviour {
 
+	public AudioClip swordhit;
 	public PlayerDataManager manager;
 	public Animator animator;
 	public GameObject playerDataManagerObj;
@@ -33,6 +35,7 @@ public class Knight : MonoBehaviour {
 	void Start () {
 		animator = GetComponent<Animator>();
 		playerDataManager = playerDataManagerObj.GetComponent<PlayerDataManager>();
+
 	}
 	
 	void OnAnimatorIK(){
@@ -106,6 +109,7 @@ public class Knight : MonoBehaviour {
 		if (health <= 0) {
 			StartCoroutine(WaitForLost());
 		}
+		AudioSource.PlayClipAtPoint (swordhit, transform.position);
 	}
 
 	void Experience(int exp) {
@@ -144,6 +148,7 @@ public class Knight : MonoBehaviour {
 	}
 
 	void Attack() {
+		audio.Play ();
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 		RaycastHit[] hits = Physics.RaycastAll (transform.position, fwd, 4.0f);
 		for (int i = 0; i < hits.Length; i++) {

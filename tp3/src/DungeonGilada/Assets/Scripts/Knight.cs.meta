@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: 945ca0d63b95da54aa3031c9a13ce036
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - swordhit: {fileID: 8300000, guid: 2cfb28004a6114a6aa34f38157615c13, type: 3}
+  - manager: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - playerDataManagerObj: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
