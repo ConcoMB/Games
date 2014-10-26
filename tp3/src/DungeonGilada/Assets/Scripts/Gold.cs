@@ -12,14 +12,11 @@ public class Gold : MonoBehaviour {
 		target = go.transform;
 		knight = go.GetComponent<Knight>();
 	}
-	
-	void Update () {
-		float distance = Vector3.Distance (transform.position, target.position);
-		if (distance < 0.5) {
+
+	void  OnTriggerEnter ( Collider other){
+		if(other.name == "Knight"){
 			knight.SendMessage("EarnGold", value, SendMessageOptions.DontRequireReceiver);
-			renderer.enabled = false;
-			light.enabled = false;
-			Destroy(this);
+			Destroy(gameObject);
 		}
 	}
 }

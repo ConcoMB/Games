@@ -10,7 +10,7 @@ public class SpawnPoint : MonoBehaviour {
 		if (Random.value < probability) {
 			int index = Random.Range(0, spawnObjects.Length);
 			Debug.Log (index);
-			GameObject spawned = (GameObject) Instantiate (spawnObjects[index], transform.position, transform.rotation);
+			GameObject spawned = (GameObject) Instantiate (spawnObjects[index], transform.position, spawnObjects[index].transform.rotation);
 		}
 	}
 	

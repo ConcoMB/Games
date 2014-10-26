@@ -21,8 +21,10 @@ public class Skelleton : MonoBehaviour {
 
 	void Start () {
 		knightObject = GameObject.FindGameObjectWithTag ("Player");
-		target = knightObject.transform;
-		knight = knightObject.GetComponent<Knight> ();
+		if (knightObject != null) {
+			target = knightObject.transform;
+			knight = knightObject.GetComponent<Knight> ();
+		}
 		AnimationEvent hitEvent = new AnimationEvent();
 		hitEvent.functionName = "SetIdle";
 		hitEvent.time = animation.GetClip("gethit").length;
@@ -34,9 +36,7 @@ public class Skelleton : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (true)
-						return;
-		if (status != Status.Idle) {
+		if (status != Status.Idle || knight == null) {
 			return;
 		}
 		float distance = Vector3.Distance (transform.position, target.position);

@@ -105,7 +105,6 @@ public class Knight : MonoBehaviour {
 		health -= (hit - armor);
 		if (health <= 0) {
 			StartCoroutine(WaitForLost());
-
 		}
 	}
 
@@ -130,7 +129,7 @@ public class Knight : MonoBehaviour {
 	}
 
 	IEnumerator TimerClickTime(){ 
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(1f);
 		leftMouseClick=false;
 		getHit = false;
 		yield return null;
@@ -145,12 +144,15 @@ public class Knight : MonoBehaviour {
 	}
 
 	void Attack() {
-		RaycastHit hit;
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
-		if (Physics.Raycast (transform.position, fwd, out hit, 4.0f)) {
-			Debug.Log ("hit");
-			GameObject enemy = hit.collider.gameObject;
-			enemy.SendMessage("Hit", strength, SendMessageOptions.DontRequireReceiver);
+		RaycastHit[] hits = Physics.RaycastAll (transform.position, fwd, 4.0f);
+		for (int i = 0; i < hits.Length; i++) {
+			RaycastHit hit = hits [i];
+			if (hit.collider.tag == "enemy") {
+				Debug.Log ("hit");
+				GameObject enemy = hit.collider.gameObject;
+				enemy.SendMessage ("Hit", strength, SendMessageOptions.DontRequireReceiver);
+			}
 		}
 	}
 
@@ -161,7 +163,7 @@ public class Knight : MonoBehaviour {
 	}
 
 	IEnumerator WaitForLost() {
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(0.1f);
 		Application.LoadLevel("Lost");
 		yield return null;	
 	}

@@ -28,12 +28,12 @@ public class Powerup : MonoBehaviour {
 			transform.Rotate (0, 0, rotationAmount * Time.deltaTime);
 			break;
 		}
-		float distance = Vector3.Distance (transform.position, target.position);
-		if (distance < 1) {
+	}
+
+	void  OnTriggerEnter ( Collider other){
+		if(other.name == "Knight"){
 			knight.SendMessage("Powerup" + type, value, SendMessageOptions.DontRequireReceiver);
-			renderer.enabled = false;
-			light.enabled = false;
-			Destroy(this);
+			Destroy(gameObject);
 		}
 	}
 }

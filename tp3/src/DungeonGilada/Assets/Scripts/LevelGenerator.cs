@@ -14,14 +14,19 @@ public class LevelGenerator : MonoBehaviour {
 		for (int i = 0; i < length - 1; i++) {
 			bool collission = false;
 			int index = Random.Range(0, rooms.Length);
+			int tries = 0;
 			do {
 				Transform room = (Transform) Instantiate(rooms[index], mountPoint.transform.position, mountPoint.transform.rotation);
 				GameObject newMountPoint = room.FindChild("Mount Point").gameObject;
-				if (Physics.Raycast(newMountPoint.transform.position, newMountPoint.transform.TransformDirection(Vector3.forward), 15)) {
+				if (Physics.Raycast(newMountPoint.transform.position, newMountPoint.transform.TransformDirection(Vector3.forward), 3)) {
 					Debug.Log ("hit");
 					collission = true;
 					index = (index + 1) % rooms.Length;
 					Destroy (room.gameObject);
+					tries++;
+					if(tries >= rooms.Length) {
+						return;
+					}
 				}else{					
 					mountPoint = newMountPoint;
 					collission = false;
