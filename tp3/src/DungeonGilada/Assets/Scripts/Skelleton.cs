@@ -3,9 +3,12 @@ using System.Collections;
 
 public class Skelleton : MonoBehaviour {
 
-	public AudioClip swordhit;
-	public AudioClip skelletonsword;
 	public int moveSpeed = 3;
+	public AudioClip dieSound;
+	public AudioClip laughSound;
+	public AudioClip attackSound;
+	public AudioClip hitSound;
+
 	public int rotationSpeed = 3;
 	public int health = 10;
 	public float attackRate = 4.0f;
@@ -18,6 +21,7 @@ public class Skelleton : MonoBehaviour {
 	private Knight knight;
 	private bool deadStart;
 	private Status status;
+	private bool laughed = false;
 
 	public enum Status{Idle, Attacking, Hit, Dead}
 
@@ -52,15 +56,21 @@ public class Skelleton : MonoBehaviour {
 		} else if (distance < 3) {
 			counter += Time.deltaTime;
 			if (counter > attackRate) {
+				AudioSource.PlayClipAtPoint(attackSound, Camera.main.transform.position);
+
 				status = Status.Attacking;
 				animation.Play ("attack");	
-				AudioSource.PlayClipAtPoint(skelletonsword, transform.position);
 				knight.SendMessage("Hit", strength, SendMessageOptions.DontRequireReceiver);
 				counter = 0.0f;
 			} else {
 				animation.Play ("waitingforbattle");		
 			}
 		} else if (distance < 10) {
+			if (!laughed) {
+				laughed = true;
+				AudioSource.PlayClipAtPoint(laughSound, Camera.main.transform.position);
+			}
+
 			animation.Play ("run");
 			transform.position += transform.forward * moveSpeed * Time.deltaTime;
 		} else {
@@ -75,13 +85,14 @@ public class Skelleton : MonoBehaviour {
 		Debug.Log (health);
 		health -= strenght;
 		if (health < 0) {
+			AudioSource.PlayClipAtPoint(dieSound, Camera.main.transform.position);
 			deadStart = true;
 			collider.enabled = false;
 			knight.SendMessage("Experience", expPoints, SendMessageOptions.DontRequireReceiver);
 			status = Status.Idle;
 		} else {
+			AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position);
 			animation.Play ("gethit");
-			AudioSource.PlayClipAtPoint (swordhit, transform.position	);
 			status = Status.Hit;
 		}
 	}

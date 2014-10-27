@@ -8,6 +8,9 @@ public class Boss : MonoBehaviour {
 	public float attackRate = 4.0f;
 	public int strength = 3;
 	public int expPoints = 100;
+	public AudioClip hitSound;
+	public AudioClip dieSound;
+	public AudioClip attackSound;
 	
 	private float counter = 0.0f;
 	private Transform target;
@@ -59,6 +62,8 @@ public class Boss : MonoBehaviour {
 		} else if (distance < 3) {
 			counter += Time.deltaTime;
 			if (counter > attackRate) {
+				AudioSource.PlayClipAtPoint(attackSound, Camera.main.transform.position);
+
 				status = Status.Attacking;
 				attackAnim = !attackAnim;
 				if (attackAnim) {
@@ -89,6 +94,7 @@ public class Boss : MonoBehaviour {
 		health -= strenght;
 		Debug.Log (health);
 		if (health < 0) {
+			AudioSource.PlayClipAtPoint(dieSound, Camera.main.transform.position);
 			deadStart = true;
 			collider.enabled = false;
 			knight.SendMessage("Experience", expPoints, SendMessageOptions.DontRequireReceiver);
@@ -106,6 +112,7 @@ public class Boss : MonoBehaviour {
 	IEnumerator delayHit(int i) {
 		yield return new WaitForSeconds(0.5f);
 		animation.Play ("hit" + i);	
+		AudioSource.PlayClipAtPoint(hitSound, Camera.main.transform.position);
 		yield return null;	
 	}
 

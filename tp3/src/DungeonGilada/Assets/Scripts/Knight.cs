@@ -5,7 +5,9 @@ using System.Collections.Generic;
 
 public class Knight : MonoBehaviour {
 
-	public AudioClip swordhit;
+	public AudioClip[] attackSounds;
+	public AudioClip[] hitSounds;
+	public AudioClip dieSound;
 	public PlayerDataManager manager;
 	public Animator animator;
 	public GameObject playerDataManagerObj;
@@ -29,12 +31,16 @@ public class Knight : MonoBehaviour {
 	public int gold = 0;
 	public int levelRate = 5;
 	private PlayerDataManager playerDataManager;
+	private int hitSoundIndex = 0;
+	private int attackSoundIndex = 0;
+	public ParticleSystem blood;
 
 	public enum Status{Idle, Hit, Attacking, Defending};
 
 	void Start () {
 		animator = GetComponent<Animator>();
 		playerDataManager = playerDataManagerObj.GetComponent<PlayerDataManager>();
+		blood.Stop();
 
 	}
 	
@@ -104,12 +110,19 @@ public class Knight : MonoBehaviour {
 	}	
 	
 	void Hit(int hit) {
+		blood.Play();
 		getHit = true;
 		health -= (hit - armor);
 		if (health <= 0) {
-			StartCoroutine(WaitForLost());
+			AudioSource.PlayClipAtPoint (dieSound, Camera.main.transform.position);
+
+			StartCoroutine (WaitForLost ());
+		} else {
+			AudioSource.PlayClipAtPoint (hitSounds [hitSoundIndex % hitSounds.Length], Camera.main.transform.position);
+			hitSoundIndex++;
 		}
-		AudioSource.PlayClipAtPoint (swordhit, transform.position	);
+		StartCoroutine (WaitForBlood ());
+
 	}
 
 	void Experience(int exp) {
@@ -148,7 +161,12 @@ public class Knight : MonoBehaviour {
 	}
 
 	void Attack() {
-		audio.Play ();
+		AudioSource.PlayClipAtPoint(attackSounds[attackSoundIndex % attackSounds.Length], Camera.main.transform.position);
+		attackSoundIndex++;
+//		if (status != Status.Idle) {
+//				return;
+//		}
+//		audio.Play ();
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 		RaycastHit[] hits = Physics.RaycastAll (transform.position, fwd, 4.0f);
 		for (int i = 0; i < hits.Length; i++) {
@@ -168,8 +186,14 @@ public class Knight : MonoBehaviour {
 	}
 
 	IEnumerator WaitForLost() {
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(1f);
 		Application.LoadLevel("Lost");
+		yield return null;	
+	}
+
+	IEnumerator WaitForBlood() {
+		yield return new WaitForSeconds(1f);
+		blood.Stop ();
 		yield return null;	
 	}
 
