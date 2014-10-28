@@ -25,6 +25,8 @@ public class LevelGenerator : MonoBehaviour {
 					Destroy (room.gameObject);
 					tries++;
 					if(tries >= rooms.Length) {
+						Debug.Log ("Premature final room");
+						addFinalRoom(mountPoint);
 						return;
 					}
 				}else{					
@@ -34,6 +36,10 @@ public class LevelGenerator : MonoBehaviour {
 			} while(collission);
 
 		}
+		addFinalRoom (mountPoint);
+	}
+
+	private void addFinalRoom(GameObject mountPoint) {
 		Transform finalRoomT = (Transform) Instantiate(finalRoom, mountPoint.transform.position, mountPoint.transform.rotation);
 	}
 }
