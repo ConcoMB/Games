@@ -70,9 +70,14 @@ public class Skelleton : MonoBehaviour {
 				laughed = true;
 				AudioSource.PlayClipAtPoint(laughSound, Camera.main.transform.position);
 			}
-
-			animation.Play ("run");
-			transform.position += transform.forward * moveSpeed * Time.deltaTime;
+			Vector3 rayDirection = (target.position - transform.position) + new Vector3(0, 1, 0);
+			//Debug.DrawRay(transform.position + new Vector3(0, 1, 0), rayDirection);
+			RaycastHit hit;
+			if(!Physics.Raycast(transform.position + new Vector3(0, 1, 0), rayDirection, out hit, distance - 2f) || hit.collider.gameObject.tag == "Player") {
+				animation.Play ("run");
+				transform.position += transform.forward * moveSpeed * Time.deltaTime;
+			}
+			Debug.Log(hit.collider.tag);
 		} else {
 			animation.Play("idle");
 		}
