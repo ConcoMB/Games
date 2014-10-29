@@ -17,11 +17,11 @@ public class WonKnight : MonoBehaviour {
 		transform.position = position;
 		acum += Time.deltaTime;
 		if (acum <= animationDelta) {
-			animator.SetBool ("GetHit", false);
+			animator.SetBool ("LeftMouseClick", false);
 			return;
 		}
 		acum = 0;
-		animator.SetBool ("GetHit", true);
+		animator.SetBool ("LeftMouseClick", true);
 		animator.SetFloat ("HitFromX", 1);
 		animator.SetFloat ("HitFromZ", 10);
 	}
