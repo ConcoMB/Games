@@ -7,12 +7,11 @@ public class Powerup : MonoBehaviour {
 	public string type;
 	public string rotateAxis;
 	public float rotationAmount = 45;
-	private Transform target;
 	private Knight knight;
+	public AudioClip pickupSound;
 
 	void Start () {
 		GameObject go = GameObject.FindGameObjectWithTag ("Player");
-		target = go.transform;
 		knight = go.GetComponent<Knight>();
 	}
 	
@@ -32,6 +31,7 @@ public class Powerup : MonoBehaviour {
 
 	void  OnTriggerEnter ( Collider other){
 		if(other.name == "Knight"){
+			AudioSource.PlayClipAtPoint (pickupSound, Camera.main.transform.position);
 			knight.SendMessage("Powerup" + type, value, SendMessageOptions.DontRequireReceiver);
 			Destroy(gameObject);
 		}

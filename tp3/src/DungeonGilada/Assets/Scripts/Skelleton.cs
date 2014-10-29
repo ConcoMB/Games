@@ -77,7 +77,6 @@ public class Skelleton : MonoBehaviour {
 				animation.Play ("run");
 				transform.position += transform.forward * moveSpeed * Time.deltaTime;
 			}
-			Debug.Log(hit.collider.tag);
 		} else {
 			animation.Play("idle");
 		}
@@ -87,7 +86,6 @@ public class Skelleton : MonoBehaviour {
 		if (status == Status.Dead) {
 			return;
 		}
-		Debug.Log (health);
 		health -= strenght;
 		if (health < 0) {
 			AudioSource.PlayClipAtPoint(dieSound, Camera.main.transform.position);
