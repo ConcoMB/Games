@@ -33,9 +33,10 @@ public class Knight : MonoBehaviour {
 	private PlayerDataManager playerDataManager;
 	private int hitSoundIndex = 0;
 	private int attackSoundIndex = 0;
+	public AudioClip levelupSound;
 	public ParticleSystem blood;
 
-	public enum Status{Idle, Hit, Attacking, Defending};
+	public enum Status{Idle, Hit, Attacking};
 
 	void Start () {
 		animator = GetComponent<Animator>();
@@ -55,7 +56,8 @@ public class Knight : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (leftMouseClick) {
+		Debug.Log (status);
+		if (leftMouseClick && status == Status.Idle) {
 			status = Status.Attacking;
 			Attack();
 			StartCoroutine(WaitForAttackToEnd());
@@ -63,6 +65,7 @@ public class Knight : MonoBehaviour {
 		} 
 		if (getHit) {
 			status = Status.Hit;
+			StartCoroutine(WaitForHitToEnd());
 			StartCoroutine ("TimerClickTime");
 		} 
 		if (animator) {	
@@ -100,7 +103,7 @@ public class Knight : MonoBehaviour {
 		}
 	}
 
-	void FightCombo(){   //every left mouse click +1 to animation number counter
+	void FightCombo(){ 
 		leftMouseClicks += 1f;
 		animator.SetFloat("LeftMouseClicks", leftMouseClicks);
 
@@ -133,6 +136,7 @@ public class Knight : MonoBehaviour {
 	}
 
 	void LevelUp() {
+		AudioSource.PlayClipAtPoint (levelupSound, Camera.main.transform.position);
 		expPoints = 0;
 		level++;
 		maxHealth += level * 10;
@@ -163,10 +167,6 @@ public class Knight : MonoBehaviour {
 	void Attack() {
 		AudioSource.PlayClipAtPoint(attackSounds[attackSoundIndex % attackSounds.Length], Camera.main.transform.position);
 		attackSoundIndex++;
-//		if (status != Status.Idle) {
-//				return;
-//		}
-//		audio.Play ();
 		Vector3 fwd = transform.TransformDirection(Vector3.forward);
 		RaycastHit[] hits = Physics.RaycastAll (transform.position, fwd, 4.0f);
 		for (int i = 0; i < hits.Length; i++) {
@@ -180,7 +180,7 @@ public class Knight : MonoBehaviour {
 	}
 
 	IEnumerator WaitForAttackToEnd() {
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(1.5f);
 		status = Status.Idle;
 		yield return null;	
 	}
@@ -191,6 +191,11 @@ public class Knight : MonoBehaviour {
 		yield return null;	
 	}
 
+	IEnumerator WaitForHitToEnd() {
+		yield return new WaitForSeconds(0.25f);
+		status = Status.Idle;
+		yield return null;	
+	}
 	IEnumerator WaitForBlood() {
 		yield return new WaitForSeconds(1f);
 		blood.Stop ();

@@ -40,6 +40,6 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	private void addFinalRoom(GameObject mountPoint) {
-		Transform finalRoomT = (Transform) Instantiate(finalRoom, mountPoint.transform.position, mountPoint.transform.rotation);
+		Instantiate(finalRoom, mountPoint.transform.position, mountPoint.transform.rotation);
 	}
 }
