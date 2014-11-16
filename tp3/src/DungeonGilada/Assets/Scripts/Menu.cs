@@ -20,11 +20,11 @@ public class Menu : MonoBehaviour {
 	}
 	
 	void OnGUI(){
-		if(GUI.Button(new Rect(Screen.width / 2.5f, Screen.height / 1.25f, 200, 100), "DARE TO PLAY?", playStyle)){
+		if(GUI.Button(new Rect(Screen.width / 3f, Screen.height / 1.25f, 200, 100), "DARE TO PLAY?", playStyle)){
 			Application.LoadLevel("Play");
 		}
-		GUI.Label (new Rect (Screen.width / 3.3f, Screen.height / 10f, 100, 50), 
-		           "DUNGEON GILADA", 
+		GUI.Label (new Rect (Screen.width / 4f, Screen.height / 10f, 100, 50), 
+		           "SKELETON SLAYER", 
 		           titleStyle);
 	}
 }
