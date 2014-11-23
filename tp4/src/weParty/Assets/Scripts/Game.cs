@@ -11,7 +11,7 @@ public class Game : MonoBehaviour {
 
 	void Start () {
 		OrcPosition = 3;
-		HumanPosition = 5;
+		HumanPosition = 10;
 		winner = Winner.HUMAN;
 		Application.LoadLevel ("Board");
 	}

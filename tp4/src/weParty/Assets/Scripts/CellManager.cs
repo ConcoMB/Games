@@ -21,11 +21,17 @@ public class CellManager : MonoBehaviour {
 		Debug.Log (r);
 		switch (Game.winner) {
 		case Game.Winner.HUMAN:
-			Game.HumanPosition = (Game.HumanPosition + r) % cells.Length;
+			Game.HumanPosition += r;
+			if (Game.HumanPosition >= cells.Length) {
+				Game.HumanPosition = cells.Length - 1;
+			}
 			human.nextCell = cells [Game.HumanPosition];
 			break;
 		case Game.Winner.ORC:
 			Game.OrcPosition = (Game.OrcPosition + r) % cells.Length;
+			if (Game.OrcPosition >= cells.Length) {
+				Game.OrcPosition = cells.Length - 1;
+			}
 			orc.nextCell = cells [Game.OrcPosition];
 			break;
 		}
