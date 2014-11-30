@@ -6,18 +6,15 @@ public class Player : MonoBehaviour {
 	public GameObject currentCell;
 	public GameObject nextCell;
 	public GameObject finalCell;
-	public GameObject playerDataManagerGO;
-	private PlayerDataManager playerDataManager;
 	public GameObject cellManagerGO;
-	private CellManager cellManager;
+	private DataManager dataManager;
 
 	public int rotationSpeed = 3;
 	public int moveSpeed = 1;
 
 	void Start () {
 		finalCell = GameObject.FindGameObjectWithTag ("LastCell");
-		playerDataManager = playerDataManagerGO.GetComponent<PlayerDataManager> ();
-		cellManager = cellManagerGO.GetComponent<CellManager> ();
+		dataManager = cellManagerGO.GetComponent<DataManager> ();
 	}
 
 	void Update () {
@@ -37,11 +34,10 @@ public class Player : MonoBehaviour {
 			transform.position = currentCell.transform.position;
 			Debug.Log(currentCell == finalCell);
 			if (currentCell == finalCell) {
-				cellManager.SendMessage ("Win", SendMessageOptions.DontRequireReceiver);
-				playerDataManager.SendMessage ("Win", SendMessageOptions.DontRequireReceiver);
+				dataManager.SendMessage ("Win", SendMessageOptions.DontRequireReceiver);
 				return;
 			}
-			cellManager.SendMessage ("FinishedMoving", SendMessageOptions.DontRequireReceiver);
+			dataManager.SendMessage ("FinishedMoving", SendMessageOptions.DontRequireReceiver);
 			nextCell = null;
 		}
 	}

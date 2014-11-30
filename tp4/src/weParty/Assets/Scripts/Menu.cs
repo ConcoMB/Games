@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour {
 		playStyle = new GUIStyle ();
 		playStyle.fontSize = 40;
 		playStyle.font = font;
-		playStyle.normal.textColor = Color.white;
+		playStyle.normal.textColor = Color.red;
 		titleStyle = new GUIStyle ();
 		titleStyle.fontSize = 70;
 		titleStyle.font = font;
@@ -20,10 +20,16 @@ public class Menu : MonoBehaviour {
 	}
 	
 	void OnGUI(){
-		if(GUI.Button(new Rect(Screen.width / 3f, Screen.height / 1.25f, 200, 100), "DARE TO PLAY?", playStyle)){
+		if(GUI.Button(new Rect(100, Screen.height - 100, 200, 100), "Play vs CPU", playStyle)){
 			Application.LoadLevel("Game");
 		}
-		GUI.Label (new Rect (Screen.width / 4f, Screen.height / 10f, 100, 50), 
+		if(GUI.Button(new Rect(Screen.width / 2 - 200, Screen.height - 100, 200, 100), "Play vs friends", playStyle)){
+//			Application.LoadLevel("Game");
+		}
+		if(GUI.Button(new Rect(Screen.width - 400, Screen.height - 100, 200, 100), "Top players", playStyle)){
+//			Application.LoadLevel("Game");
+		}
+		GUI.Label (new Rect (Screen.width / 2f - 200, 50, 100, 50), 
 		           "WE PARTY", 
 		           titleStyle);
 	}
