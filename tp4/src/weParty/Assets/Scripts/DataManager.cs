@@ -63,8 +63,8 @@ public class DataManager : MonoBehaviour {
 		if (status != Status.PICK_GAME) {
 			return;
 		}
-		int r = Random.Range (0, games.Length - 1);
-		game = games[r];
+		int r = Random.Range (0, 100);
+		game = games[r % games.Length];
 		StartCoroutine(waitToSetStatus(Status.GAME_PICKED));
 		StartCoroutine(WaitToPlayGame());
 	}
@@ -82,7 +82,7 @@ public class DataManager : MonoBehaviour {
 			           style);
 			break;
 		case Status.MOVED:
-			if(GUI.Button(new Rect(Screen.width / 2 - 300, 100, 400, 200), 
+			if(GUI.Button(new Rect(Screen.width / 2 - 300, 100, 600, 200), 
 			              "PLAY NEXT ROUND", 
 			              buttonStyle)){
 				status = Status.PICK_GAME;
@@ -111,12 +111,12 @@ public class DataManager : MonoBehaviour {
 	}
 
 	IEnumerator WaitToWin() {
-		yield return new WaitForSeconds(4.0f);
+		yield return new WaitForSeconds(3.0f);
 		Application.LoadLevel ("Won");
 	}
 
 	IEnumerator WaitToPlayGame() {
-		yield return new WaitForSeconds(4.0f);
+		yield return new WaitForSeconds(3.0f);
 		Application.LoadLevel (game);
 	}
 
