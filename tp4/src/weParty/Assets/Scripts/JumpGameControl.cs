@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class JumpGameControl : MonoBehaviour {
@@ -17,6 +18,8 @@ public class JumpGameControl : MonoBehaviour {
 	private GUIStyle style;
 	private GUIStyle timeUpStyle;
 	public Font font;
+	private Queue<GameObject> platformPool = new Queue<GameObject>();
+	private int spawned = 0;
 
 	void Awake () {
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
@@ -85,7 +88,7 @@ public class JumpGameControl : MonoBehaviour {
             Transform plat = (Transform)platforms[i];
             if (plat.position.y < (transform.position.y - 10))
             {
-                Destroy(plat.gameObject);
+				platformPool.Enqueue(plat.gameObject);
                 platforms.RemoveAt(i);
             }            
         }
@@ -103,7 +106,13 @@ public class JumpGameControl : MonoBehaviour {
             float x = Random.Range(-10.0f, 10.0f);
             Vector3 pos = new Vector3(x, spawnHeight, 12.0f);
 
-            Transform plat = (Transform)Instantiate(platformPrefab, pos, Quaternion.identity);
+			Transform plat;
+			if(platformPool.Count == 0) {
+            	plat = (Transform)Instantiate(platformPrefab, pos, Quaternion.identity);
+				Debug.Log("SPAWN " + spawned++);
+			} else {
+				plat = platformPool.Dequeue().transform;
+			}
             platforms.Add(plat);
 
             spawnHeight += Random.Range(1.6f, 3.5f);
