@@ -14,7 +14,7 @@ public class DataManager : MonoBehaviour {
 	private GUIStyle buttonStyle;
 	public Font font;
 	public enum Status { MOVING, MOVED, PICK_GAME, GAME_PICKED, WIN }
-	public string[] games = { "EggCatch", "Jump" };
+	public string[] games = { "EggCatch"};//, "Jump" };
 	public string game;
 
 	void Start () {

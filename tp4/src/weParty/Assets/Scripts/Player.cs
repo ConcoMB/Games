@@ -23,7 +23,8 @@ public class Player : MonoBehaviour {
 		}
 		transform.rotation = Quaternion.Slerp (transform.rotation, 
 		                                       Quaternion.LookRotation (nextCell.transform.position - transform.position), 
-		                                       rotationSpeed * Time.deltaTime);
+		                                       0.1f
+		                                       );
 		transform.position = new Vector3 (transform.position.x, 0, transform.position.z);
 		float distance = Vector3.Distance (transform.position, nextCell.transform.position);
 		transform.rotation = new Quaternion (0, transform.rotation.y, 0, transform.rotation.w);

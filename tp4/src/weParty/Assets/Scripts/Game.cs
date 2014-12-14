@@ -29,6 +29,9 @@ public class Game : MonoBehaviour {
 		if (r == 0) {
 			winner = Player.HUMAN;
 			OrcPoints = HumanPoints - r2;
+			if (OrcPoints < 0) {
+				OrcPoints = 0;
+			}
 		} else {
 			winner = Player.ORC;
 			OrcPoints = HumanPoints + r2;
