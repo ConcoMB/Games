@@ -24,7 +24,8 @@ public class Game : MonoBehaviour {
 		if (player == Player.HUMAN) {
 			HumanPoints = points;
 		}
-		int r = Random.Range (0, 1);
+		int r = Random.Range (0, 2);
+		Debug.Log (r);
 		int r2 = Random.Range (1, 10);
 		if (r == 0) {
 			winner = Player.HUMAN;
