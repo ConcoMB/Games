@@ -65,7 +65,9 @@ public class DataManager : MonoBehaviour {
 		}
 		int r = Random.Range (0, 100);
 		game = games[r % games.Length];
-		StartCoroutine(waitToSetStatus(Status.GAME_PICKED));
+//		StartCoroutine(waitToSetStatus(Status.GAME_PICKED));
+
+		status = Status.GAME_PICKED;
 		StartCoroutine(WaitToPlayGame());
 	}
 

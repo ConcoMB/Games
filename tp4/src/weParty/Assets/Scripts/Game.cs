@@ -5,6 +5,10 @@ public class Game : MonoBehaviour {
 
 	static public int HumanPosition;
 	static public int OrcPosition;
+	
+	static public int HumanPoints;
+	static public int OrcPoints;
+
 	static public Player winner;
 
 	public enum Player { ORC, HUMAN, NULL };
@@ -17,12 +21,17 @@ public class Game : MonoBehaviour {
 	}
 
 	public static void SetPoints(int points, Player player) {
+		if (player == Player.HUMAN) {
+			HumanPoints = points;
+		}
 		int r = Random.Range (0, 1);
-		Debug.Log (r);
+		int r2 = Random.Range (1, 10);
 		if (r == 0) {
 			winner = Player.HUMAN;
+			OrcPoints = HumanPoints - r2;
 		} else {
 			winner = Player.ORC;
+			OrcPoints = HumanPoints + r2;
 		}
 	}
 }

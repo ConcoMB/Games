@@ -134,6 +134,6 @@ public class JumpGameControl : MonoBehaviour {
 	IEnumerator WaitForBackToBoard() {
 		Game.SetPoints (theScore, Game.Player.HUMAN);
 		yield return new WaitForSeconds(2.0f);
-		Application.LoadLevel ("Board");
+		Application.LoadLevel ("Results");
 	}
 }
