@@ -14,7 +14,7 @@ public class DataManager : MonoBehaviour {
 	private GUIStyle buttonStyle;
 	public Font font;
 	public enum Status { MOVING, MOVED, PICK_GAME, GAME_PICKED, WIN }
-	public string[] games = { "EggCatch"};//, "Jump" };
+	public string[] games = { "EggCatch", "Jump" };
 	public string game;
 
 	void Start () {
@@ -74,7 +74,7 @@ public class DataManager : MonoBehaviour {
 	void OnGUI(){
 		switch (status) {
 		case Status.MOVING:
-			GUI.Label (new Rect (Screen.width / 2 - 300, 100, 200, 100), 
+			GUI.Label (new Rect (Screen.width / 2 - 350, 100, 200, 100), 
 			           (Game.winner == Game.Player.HUMAN ? "Human" : "Orc") + " moves " + moves + " cells", 
 			           style);
 			break;

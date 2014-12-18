@@ -28,6 +28,7 @@ public class JumpGameControl : MonoBehaviour {
 	}
 
 	void Start() {
+		lost = false;
 		style = new GUIStyle ();
 		style.fontSize = 30;
 		style.font = font;
