@@ -29,7 +29,19 @@ public class EggPlayerScript : MonoBehaviour {
 			StartCoroutine(WaitForBackToBoard());
 			return;
 		}
-        float moveInput = Input.GetAxis("Horizontal") * Time.deltaTime * 3; 
+        float moveInput = Input.GetAxis("Horizontal") * Time.deltaTime * 3;
+		if (Input.touchCount > 0) {
+			Touch touch = Input.touches[0];
+			if (touch.position.x < Screen.width/2)
+			{
+				moveInput = - Time.deltaTime * 3;
+			}
+			else if (touch.position.x > Screen.width/2)
+			{
+				moveInput = Time.deltaTime * 3;
+			}
+		}
+
         transform.position += new Vector3(moveInput, 0, 0);
 
         if (transform.position.x <= -2.5f || transform.position.x >= 2.5f)

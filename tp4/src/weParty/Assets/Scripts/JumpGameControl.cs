@@ -60,6 +60,7 @@ public class JumpGameControl : MonoBehaviour {
         //Update camera position if the player has climbed and if the player is too low: Set gameover.
         float currentCameraHeight = transform.position.y;
         float newHeight = Mathf.Lerp(currentCameraHeight, playerHeight, Time.deltaTime * 10);
+
         if (playerTrans.position.y > currentCameraHeight)
         {
             transform.position = new Vector3(transform.position.x, newHeight, transform.position.z);
